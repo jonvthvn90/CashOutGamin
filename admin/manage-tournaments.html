@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Tournaments - CashOutGaming Admin</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+    <header class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Manage Tournaments</span>
+            <nav class="nav">
+                <a class="nav-link text-white" href="dashboard.html">Dashboard</a>
+                <a class="nav-link text-white" href="manage-users.html">Manage Users</a>
+                <a class="nav-link text-white" href="manage-reports.html">Manage Reports</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container mt-4">
+        <h2>All Tournaments</h2>
+        
+        <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#createTournamentModal">Create New Tournament</button>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Tournament Name</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="tournament-list">
+                <!-- Dynamically loaded tournaments from admin.js -->
+            </tbody>
+        </table>
+
+        <!-- Modal for creating a new tournament -->
+        <div class="modal fade" id="createTournamentModal" tabindex="-1" aria-labelledby="createTournamentModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="createTournamentModalLabel">Create Tournament</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="createTournamentForm">
+                            <div class="mb-3">
+                                <label for="tournamentName" class="form-label">Tournament Name</label>
+                                <input type="text" class="form-control" id="tournamentName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="tournamentType" class="form-label">Tournament Type</label>
+                                <select class="form-select" id="tournamentType">
+                                    <option value="1v1">1v1</option>
+                                    <option value="team">Team</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/admin.js"></script>
+</body>
+</html>

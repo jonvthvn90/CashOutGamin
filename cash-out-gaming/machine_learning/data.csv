@@ -1,0 +1,11 @@
+user_id,game_id,skill_level,playstyle,win_rate,target
+1,1,1000,aggressive,0.5,1
+2,1,1200,defensive,0.6,0
+3,2,900,aggressive,0.4,1
+4,2,1100,defensive,0.7,0
+5,3,1300,aggressive,0.8,1
+6,3,1000,defensive,0.3,0
+7,4,1200,aggressive,0.9,1
+8,4,900,defensive,0.2,0
+9,5,1100,aggressive,0.6,1
+10,5,1300,defensive,0.8,0

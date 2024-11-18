@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Report</h1>
+    <form method="post">
+        <label for="report-type">Report Type:</label>
+        <select id="report-type" name="report-type">
+            <option value="bug">Bug</option>
+            <option value="issue">Issue</option>
+        </select><br><br>
+        <label for="report-message">Report Message:</label>
+        <textarea id="report-message" name="report-message"></textarea><br><br>
+        <input type="submit" value="Submit Report">
+    </form>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Payouts</h1>
+    <ul>
+        {% for payout in payouts %}
+            <li>
+                <a href="{% url 'payout_detail' payout.id %}">{{ payout.amount }} ({{ payout.payout_method }})</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'create_payout' %}">Create Payout</a>
+{% endblock %}

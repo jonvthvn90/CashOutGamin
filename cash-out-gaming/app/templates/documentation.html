@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Documentation</h1>
+    <div id="documentation-container">
+        {% for document in documents %}
+            <div class="document">
+                <h2>{{ document.name }}</h2>
+                <p>{{ document.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

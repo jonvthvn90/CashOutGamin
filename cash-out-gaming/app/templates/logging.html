@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Logging</h1>
+    <div id="logging-container">
+        {% for log in logs %}
+            <div class="log">
+                <h2>{{ log.name }}</h2>
+                <p>{{ log.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

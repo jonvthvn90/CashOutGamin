@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Dashboard</h1>
+    <div id="dashboard-container">
+        {% for dashboard in dashboards %}
+            <div class="dashboard">
+                <h2>{{ dashboard.name }}</h2>
+                <p>{{ dashboard.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

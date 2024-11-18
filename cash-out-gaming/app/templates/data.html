@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Data</h1>
+    <div id="data-container">
+        {% for data in datas %}
+            <div class="data">
+                <h2>{{ data.name }}</h2>
+                <p>{{ data.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

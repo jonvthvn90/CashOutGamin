@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Create Payout</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="number" name="amount" placeholder="Amount">
+        <select name="payout_method">
+            <option value="paypal">PayPal</option>
+            <option value="stripe">Stripe</option>
+        </select>
+        <button type="submit">Create Payout</button>
+    </form>
+{% endblock %}

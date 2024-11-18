@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Matches</h1>
+    <ul>
+        {% for match in matches %}
+            <li>
+                <a href="{% url 'match_detail' match.id %}">{{ match.tournament.name }} - {{ match.player1.username }} vs {{ match.player2.username }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

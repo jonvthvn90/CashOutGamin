@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Tournaments</h1>
+    <ul>
+    {% for tournament in tournaments %}
+        <li>{{ tournament.name }} ({{ tournament.start_date }} - {{ tournament.end_date }})</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

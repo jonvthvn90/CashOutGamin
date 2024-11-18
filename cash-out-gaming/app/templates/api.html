@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>API</h1>
+    <div id="api-container">
+        {% for api in apis %}
+            <div class="api">
+                <h2>{{ api.name }}</h2>
+                <p>{{ api.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

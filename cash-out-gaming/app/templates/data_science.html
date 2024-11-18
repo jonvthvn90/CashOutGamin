@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Data Science</h1>
+    <div id="data-science-container">
+        {% for data_science in data_sciences %}
+            <div class="data-science">
+                <h2>{{ data_science.name }}</h2>
+                <p>{{ data_science.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

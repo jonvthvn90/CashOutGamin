@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Feedback</h1>
+    <form method="post">
+        <label for="feedback-type">Feedback Type:</label>
+        <select id="feedback-type" name="feedback-type">
+            <option value="positive">Positive</option>
+            <option value="negative">Negative</option>
+        </select><br><br>
+        <label for="feedback-message">Feedback Message:</label>
+        <textarea id="feedback-message" name="feedback-message"></textarea><br><br>
+        <input type="submit" value="Submit Feedback">
+    </form>
+{% endblock %}

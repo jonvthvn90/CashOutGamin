@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #00698f;
+}
+
+#cybersecurity-container, #data-science-container, #artificial-intelligence-container, #cloud-computing-container, #devops-container, #testing-container, #deployment-container, #monitoring-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cybersecurity, .data-science, .artificial-intelligence, .cloud-computing, .devops, .testing, .deployment, .monitoring {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cybersecurity h2, .data-science h2, .artificial-intelligence h2, .cloud-computing h2, .devops h2, .testing h2, .deployment h2, .monitoring h2 {
+    margin-top: 0;
+}
+
+.cybersecurity p, .data-science p, .artificial-intelligence p, .cloud-computing p, .devops p, .testing p, .deployment p, .monitoring p {
+    margin-bottom: 20px;
+}

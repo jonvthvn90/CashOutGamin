@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Blockchain</h1>
+    <div id="blockchain-container">
+        {% for blockchain in blockchains %}
+            <div class="blockchain">
+                <h2>{{ blockchain.name }}</h2>
+                <p>{{ blockchain.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

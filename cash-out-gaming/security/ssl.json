@@ -1,0 +1,6 @@
+{
+    "ssl": {
+      "key": "path/to/ssl/key",
+      "cert": "path/to/ssl/cert"
+    }
+  }

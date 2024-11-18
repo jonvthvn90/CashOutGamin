@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Backup</h1>
+    <form method="post">
+        <label for="backup-type">Backup Type:</label>
+        <select id="backup-type" name="backup-type">
+            <option value="full">Full</option>
+            <option value="incremental">Incremental</option>
+        </select><br><br>
+        <input type="submit" value="Backup">
+    </form>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>IoT</h1>
+    <div id="iot-container">
+        {% for iot in iots %}
+            <div class="iot">
+                <h2>{{ iot.name }}</h2>
+                <p>{{ iot.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

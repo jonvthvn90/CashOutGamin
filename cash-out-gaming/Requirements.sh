@@ -1,0 +1,11 @@
+Flask
+Flask-SQLAlchemy
+Flask-Login
+Flask-WTF
+TensorFlow
+Keras
+Scikit-learn
+PayPal
+Stripe
+CashApp
+Twitch

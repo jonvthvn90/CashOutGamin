@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Integration</h1>
+    <div id="integration-container">
+        {% for integration in integrations %}
+            <div class="integration">
+                <h2>{{ integration.name }}</h2>
+                <p>{{ integration.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

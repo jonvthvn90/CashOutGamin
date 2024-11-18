@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Error Log</h1>
+    <div id="error-log-container">
+        {% for error in errors %}
+            <div class="error">
+                <h2>{{ error.date }}</h2>
+                <p>{{ error.message }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

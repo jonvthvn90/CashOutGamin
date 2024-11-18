@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Administration</h1>
+    <div id="administration-container">
+        {% for administration in administrations %}
+            <div class="administration">
+                <h2>{{ administration.name }}</h2>
+                <p>{{ administration.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

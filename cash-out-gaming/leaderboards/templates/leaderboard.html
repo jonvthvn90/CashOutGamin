@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Leaderboards</h1>
+    <ul>
+        {% for leaderboard in leaderboards %}
+            <li>
+                <a href="{% url 'leaderboard_detail' leaderboard.id %}">{{ leaderboard.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'create_leaderboard' %}">Create Leaderboard</a>
+{% endblock %}

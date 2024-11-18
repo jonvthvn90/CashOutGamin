@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Penalty</h1>
+    <div id="penalty-container">
+        {% for penalty in penalties %}
+            <div class="penalty">
+                <h2>{{ penalty.name }}</h2>
+                <p>{{ penalty.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

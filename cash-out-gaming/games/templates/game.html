@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ game.title }}</h1>
+    <p>{{ game.description }}</p>
+    <p>Created by {{ game.user.username }} on {{ game.created_at }}</p>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Challenge</h1>
+    <form method="post">
+        <label for="opponent">Opponent:</label>
+        <input type="text" id="opponent" name="opponent"><br><br>
+        <label for="game">Game:</label>
+        <input type="text" id="game" name="game"><br><br>
+        <input type="submit" value="Challenge">
+    </form>
+{% endblock %}

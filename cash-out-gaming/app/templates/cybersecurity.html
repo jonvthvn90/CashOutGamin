@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Cybersecurity</h1>
+    <div id="cybersecurity-container">
+        {% for cybersecurity in cybers securities %}
+            <div class="cybersecurity">
+                <h2>{{ cybersecurity.name }}</h2>
+                <p>{{ cybersecurity.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

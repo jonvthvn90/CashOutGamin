@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Reward</h1>
+    <div id="reward-container">
+        {% for reward in rewards %}
+            <div class="reward">
+                <h2>{{ reward.name }}</h2>
+                <p>{{ reward.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Wallets</h1>
+    <ul>
+        {% for wallet in wallets %}
+            <li>{{ wallet.user.username }} - Balance: ${{ wallet.balance }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'create_wallet' %}">Create Wallet</a>
+{% endblock %}

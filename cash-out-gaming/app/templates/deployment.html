@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Deployment</h1>
+    <div id="deployment-container">
+        {% for deployment in deployments %}
+            <div class="deployment">
+                <h2>{{ deployment.name }}</h2>
+                <p>{{ deployment.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Create Wallet</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Create Wallet</button>
+    </form>
+{% endblock %}

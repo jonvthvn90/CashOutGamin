@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Maintenance</h1>
+    <ul>
+        {% for maintenance in maintenances %}
+            <li>
+                <a href="{% url 'maintenance_detail' maintenance.id %}">{{ maintenance.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'create_maintenance' %}">Create Maintenance</a>
+{% endblock %}

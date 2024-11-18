@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Development</h1>
+    <div id="development-container">
+        {% for development in developments %}
+            <div class="development">
+                <h2>{{ development.name }}</h2>
+                <p>{{ development.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

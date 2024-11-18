@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Types</h1>
+    <ul>
+        {% for type in types %}
+            <li>{{ type.name }} - {{ type.description }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'create_type' %}">Create Type</a>
+{% endblock %}

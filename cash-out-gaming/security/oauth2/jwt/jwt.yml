@@ -1,0 +1,4 @@
+jwt:
+  secret: mysecret
+  issuer: myissuer
+  audience: myaudience

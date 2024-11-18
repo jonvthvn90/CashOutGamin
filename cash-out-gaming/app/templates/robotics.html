@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Robotics</h1>
+    <div id="robotics-container">
+        {% for robotics in robotics %}
+            <div class="robotics">
+                <h2>{{ robotics.name }}</h2>
+                <p>{{ robotics.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

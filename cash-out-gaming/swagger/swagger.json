@@ -1,0 +1,104 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Game API",
+      "description": "Game API",
+      "version": "1.0.0"
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+      "/games": {
+        "get": {
+          "summary": "Get all games",
+          "responses": {
+            "200": {
+              "description": "Games retrieved successfully",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Game"
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new game",
+          "parameters": [
+            {
+              "name": "game",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Game"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Game created successfully",
+              "schema": {
+                "$ref": "#/definitions/Game"
+              }
+            }
+          }
+        }
+      },
+      "/games/{id}": {
+        "get": {
+          "summary": "Get a game by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Game retrieved successfully",
+              "schema": {
+                "$ref": "#/definitions/Game"
+              }
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a game",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "name": "game",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Game"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Game updated successfully",
+              "schema": {
+                "$ref": "#/definitions/Game"
+              }
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a game",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true

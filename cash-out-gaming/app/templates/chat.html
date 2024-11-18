@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Chat</h1>
+    <div id="chat-log">
+        {% for message in chat_log %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+    <form method="post">
+        <label for="message">Message:</label>
+        <input type="text" id="message" name="message"><br><br>
+        <input type="submit" value="Send">
+    </form>
+{% endblock %}

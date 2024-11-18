@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Analytics</h1>
+    <div id="analytics-container">
+        {% for analytic in analytics %}
+            <div class="analytic">
+                <h2>{{ analytic.name }}</h2>
+                <p>{{ analytic.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

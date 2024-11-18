@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Support</h1>
+    <div id="support-container">
+        {% for support in supports %}
+            <div class="support">
+                <h2>{{ support.name }}</h2>
+                <p>{{ support.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

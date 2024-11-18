@@ -1,0 +1,15 @@
+version: 2.1
+jobs:
+  build-and-deploy:
+    docker:
+      - image: circleci/node:14
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - run: npm run deploy
+
+workflows:
+  build-and-deploy:
+    jobs:
+      - build-and-deploy

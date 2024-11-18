@@ -1,0 +1,39 @@
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE twitch_accounts (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    twitch_id VARCHAR(50) NOT NULL,
+    access_token VARCHAR(255) NOT NULL,
+    refresh_token VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE paypal_accounts (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    paypal_id VARCHAR(50) NOT NULL,
+    access_token VARCHAR(255) NOT NULL,
+    refresh_token VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE cashapp_accounts (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    cashapp_id VARCHAR(50) NOT NULL,
+    access_token VARCHAR(255) NOT NULL,
+    refresh_token VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE matches (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    opponent_id INTEGER NOT NULL,
+    game_id INTEGER NOT NULL,
+    match_date DATE NOT NULL,
+    match_time TIME NOT NULL
+);

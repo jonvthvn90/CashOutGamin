@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ platform.name }}</h1>
+    <ul>
+        {% for game in platform.games.all %}
+            <li>
+                <a href="{% url 'game' game.id %}">{{ game.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

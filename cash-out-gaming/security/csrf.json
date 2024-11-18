@@ -1,0 +1,11 @@
+{
+    "csrf": {
+      "secret": "my_secret_key",
+      "cookie": {
+        "name": "_csrf",
+        "httpOnly": true,
+        "secure": true,
+        "maxAge": 3600000
+      }
+    }
+  }

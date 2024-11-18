@@ -1,0 +1,14 @@
+node_modules/
+package-lock.json
+.env
+Dockerfile
+docker-compose.yml
+kubernetes/
+
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+venv/
+node_modules/
+.env

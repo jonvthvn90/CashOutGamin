@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Create Platform</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Name">
+        <button type="submit">Create Platform</button>
+    </form>
+{% endblock %}

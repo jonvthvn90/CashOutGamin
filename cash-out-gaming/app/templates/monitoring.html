@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Monitoring</h1>
+    <div id="monitoring-container">
+        {% for monitor in monitors %}
+            <div class="monitor">
+                <h2>{{ monitor.name }}</h2>
+                <p>{{ monitor.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

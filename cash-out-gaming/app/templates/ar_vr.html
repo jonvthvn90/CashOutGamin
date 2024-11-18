@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>AR/VR</h1>
+    <div id="ar_vr-container">
+        {% for ar_vr in ar_vrs %}
+            <div class="ar_vr">
+                <h2>{{ ar_vr.name }}</h2>
+                <p>{{ ar_vr.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Artificial Intelligence</h1>
+    <div id="artificial-intelligence-container">
+        {% for artificial_intelligence in artificial_intelligences %}
+            <div class="artificial-intelligence">
+                <h2>{{ artificial_intelligence.name }}</h2>
+                <p>{{ artificial_intelligence.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

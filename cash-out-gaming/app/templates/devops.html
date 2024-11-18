@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>DevOps</h1>
+    <div id="devops-container">
+        {% for devops in devops %}
+            <div class="devops">
+                <h2>{{ devops.name }}</h2>
+                <p>{{ devops.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

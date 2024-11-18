@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Testing</h1>
+    <div id="testing-container">
+        {% for test in tests %}
+            <div class="test">
+                <h2>{{ test.name }}</h2>
+                <p>{{ test.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

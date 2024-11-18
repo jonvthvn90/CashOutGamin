@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Cloud Computing</h1>
+    <div id="cloud-computing-container">
+        {% for cloud_computing in cloud_computings %}
+            <div class="cloud-computing">
+                <h2>{{ cloud_computing.name }}</h2>
+                <p>{{ cloud_computing.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

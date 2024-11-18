@@ -1,0 +1,9 @@
+oauth2:
+  clients:
+    - id: myclient
+      secret: mysecret
+      redirectUris:
+        - http://localhost:3000/callback
+  authorizationServer:
+    tokenEndpoint: http://localhost:3000/token
+    authorizationEndpoint: http://localhost:3000/authorize

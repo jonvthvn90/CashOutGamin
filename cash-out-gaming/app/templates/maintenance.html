@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Maintenance</h1>
+    <div id="maintenance-container">
+        {% for maintenance in maintenances %}
+            <div class="maintenance">
+                <h2>{{ maintenance.name }}</h2>
+                <p>{{ maintenance.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

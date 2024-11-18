@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Moderation</h1>
+    <div id="moderation-container">
+        {% for moderation in moderations %}
+            <div class="moderation">
+                <h2>{{ moderation.name }}</h2>
+                <p>{{ moderation.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+``

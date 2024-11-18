@@ -1,0 +1,9 @@
+{
+    "security": {
+      "headers": {
+        "Content-Security-Policy": "default-src 'self'; script-src 'self' https://cdn.example.com;",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block"
+      }
+    }
+  }

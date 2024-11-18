@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Matches</h1>
+    <ul>
+    {% for match in matches %}
+        <li>{{ match.team1 }} vs {{ match.team2 }} ({{ match.score1 }} - {{ match.score2 }})</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
