@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Matches</h1>
+    <ul>
+        {% for match in matches %}
+            <li>{{ match.tournament.name }} ({{ match.start_date }} - {{ match.end_date }})</li>
+        {% endfor %}
+    </ul>
+    <form method="post">
+        {% csrf_token %}
+        <label for="match_name">Create Match:</label>
+        <input type="text" id="match_name" name="match_name"><br><br>
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date"><br><br>
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date"><br><br>
+        <input type="submit" value="Create">
+    </form>
+{% endblock %}

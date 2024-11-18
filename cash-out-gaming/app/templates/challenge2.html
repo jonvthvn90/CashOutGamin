@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Challenges</h1>
+    <ul>
+        {% for challenge in challenges %}
+            <li>{{ challenge.name }} ({{ challenge.start_date }} - {{ challenge.end_date }})</li>
+        {% endfor %}
+    </ul>
+    <form method="post">
+        {% csrf_token %}
+        <label for="challenge_name">Create Challenge:</label>
+        <input type="text" id="challenge_name" name="challenge_name"><br><br>
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date"><br><br>
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date"><br><br>
+        <input type="submit" value="Create">
+    </form>
+{% endblock %}
