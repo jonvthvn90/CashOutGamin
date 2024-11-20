@@ -1,22 +1,41 @@
-console.log('Hello World!');
+// Add event listener to navigation links
+document.querySelectorAll('header nav a').forEach(function(link) {
+    link.addEventListener('click', function(event) {
+        event.preventDefault();
+        var href = link.getAttribute('href');
+        // Load page content
+        fetch(href)
+            .then(response => response.text())
+            .then(html => {
+                document.querySelector('main').innerHTML = html;
+            });
+    });
+});
 
-// Add event listener to profile picture input field
-document.getElementById('profile_picture').addEventListener('change', function() {
-  // Get the selected file
-  var file = this.files[0];
-
-  // Create a new FileReader object
-  var reader = new FileReader();
-
-  // Add event listener to FileReader object
-  reader.addEventListener('load', function() {
-    // Get the base64 encoded string
-    var base64String = reader.result;
-
-    // Set the src attribute of the profile picture image
-    document.getElementById('profile-picture').src = base64String;
-  });
-
-  // Read the selected file as a data URL
-  reader.readAsDataURL(file);
+// Add event listener to login form
+document.querySelector('form.login').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var username = document.querySelector('input[name="username"]').value;
+    var password = document.querySelector('input[name="password"]').value;
+    // Authenticate user
+    fetch('/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username: username,
+            password: password
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Redirect to dashboard
+            window.location.href = '/dashboard';
+        } else {
+            // Display error message
+            document.querySelector('div.error').innerHTML = data.message;
+        }
+    });
 });

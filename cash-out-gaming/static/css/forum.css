@@ -1,0 +1,25 @@
+.forum {
+    background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
+    padding: 20px;
+}
+
+.forum-thread {
+    background-color: #f2f2f2;
+    border: 1px solid #e7e7e7;
+    padding: 20px;
+}
+
+.forum-thread h2 {
+    margin-top: 0;
+}
+
+.forum-post {
+    background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
+    padding: 20px;
+}
+
+.forum-post h3 {
+    margin-top: 0;
+}

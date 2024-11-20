@@ -1,0 +1,27 @@
+{% extends 'admin/base.html' %}
+
+{% block branding %}
+    <h1 id="site-name">{{ site_header }}</h1>
+{% endblock %}
+
+{% block nav-global %}
+    <div class="nav-global"> </div>
+{% endblock %}
+
+{% block nav-sidebar %}
+    <div class="nav-sidebar">
+        <ul>
+            <li><a href="{% url 'admin:index' %}">Dashboard</a></li>
+            <li><a href="{% url 'admin:app_list' 'app' %}">App</a></li>
+            <li><a href="{% url 'admin:auth_user_changelist' %}">Users</a></li>
+            <li><a href="{% url 'admin:auth_group_changelist' %}">Groups</a></li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div id="content-main">
+        {% block object-tools %}{% endblock %}
+        {{ content }}
+    </div>
+{% endblock %}

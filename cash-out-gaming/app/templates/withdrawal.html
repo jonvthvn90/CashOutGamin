@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Withdrawal Request</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount"><br><br>
+        <label for="payment_method">Payment Method:</label>
+        <select id="payment_method" name="payment_method">
+            <option value="PayPal">PayPal</option>
+            <option value="Cash App">Cash App</option>
+            <option value="Bank Transfer">Bank Transfer</option>
+        </select><br><br>
+        <input type="submit" value="Request Withdrawal">
+    </form>
+{% endblock %}

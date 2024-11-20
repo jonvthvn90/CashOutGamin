@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Create Match</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="match_name">Match Name:</label>
+        <input type="text" id="match_name" name="match_name"><br><br>
+        <label for="match_description">Match Description:</label>
+        <textarea id="match_description" name="match_description"></textarea><br><br>
+        <label for="match_tournament">Match Tournament:</label>
+        <select id="match_tournament" name="match_tournament">
+            {% for tournament in tournaments %}
+                <option value="{{ tournament.id }}">{{ tournament.name }}</option>
+            {% endfor %}
+        </select><br><br>
+        <label for="match_start_date">Match Start Date:</label>
+        <input type="date" id="match_start_date" name="match_start_date"><br><br>
+        <label for="match_end_date">Match End Date:</label>
+        <input type="date" id="match_end_date" name="match_end_date"><br><br>
+        <input type="submit" value="Create Match">
+    </form>
+{% endblock %}

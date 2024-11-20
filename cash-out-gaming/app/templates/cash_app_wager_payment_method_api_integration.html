@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cash App Wager Payment Method API Integration</title>
+  <script src="https://cash.app/sdk/js/v1"></script>
+</head>
+<body>
+  <h1>Cash App Wager Payment Method API Integration</h1>
+  <form id="payment-form">
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" name="amount" required>
+    <label for="currency">Currency:</label>
+    <select id="currency" name="currency" required>
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <option value="GBP">GBP</option>
+    </select>
+    <button id="pay-button">Pay with Cash App</button>
+  </form>
+  <script>
+    cash.app.pay({
+      amount: document.getElementById("amount").value,
+      currency: document.getElementById("currency").value,
+      onSuccess: function() {
+        alert("Payment successful!");
+      }
+    });
+  </script>
+</body>
+</html>

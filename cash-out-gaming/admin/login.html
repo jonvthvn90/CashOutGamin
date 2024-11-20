@@ -1,0 +1,15 @@
+{% extends 'admin/base_site.html' %}
+
+{% block content %}
+    <h1>Log in</h1>
+    <p>Please enter your login details.</p>
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" value="Log in">
+    </form>
+    <p><a href="{% url 'admin:password_reset' %}">Forgot password?</a></p>
+{% endblock %}

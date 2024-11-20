@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Withdrawal Request Successful!</h1>
+    <p>Your withdrawal request has been processed successfully.</p>
+    <p>Transaction ID: {{ transaction_id }}</p>
+    <p>Amount: {{ amount }}</p>
+    <p>Payment Method: {{ payment_method }}</p>
+    <p>Date: {{ date }}</p>
+    <a href="{% url 'index' %}">Return to Home</a>
+{% endblock %}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Twitch Stream Payment Status API Integration</title>
+  <script src="https://api.twitch.tv/helix/payments/status"></script>
+</head>
+<body>
+  <h1>Twitch Stream Payment Status API Integration</h1>
+  <form id="payment-form">
+    <label for="transaction-id">Transaction ID:</label>
+    <input type="text" id="transaction-id" name="transaction-id" required>
+    <button id="check-status-button">Check Payment Status</button>
+  </form>
+  <script>
+    twitch.payments.status({
+      transactionId: document.getElementById("transaction-id").value,
+      onSuccess: function(data) {
+        alert("Payment status: " + data.status);
+      }
+    });
+  </script>
+</body>
+</html>

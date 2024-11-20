@@ -1,0 +1,25 @@
+.tournament {
+    background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
+    padding: 20px;
+}
+
+.tournament-bracket {
+    background-color: #f2f2f2;
+    border: 1px solid #e7e7e7;
+    padding: 20px;
+}
+
+.tournament-bracket h2 {
+    margin-top: 0;
+}
+
+.tournament-match {
+    background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
+    padding: 20px;
+}
+
+.tournament-match h3 {
+    margin-top: 0;
+}

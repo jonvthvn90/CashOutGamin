@@ -1,0 +1,21 @@
+.game {
+    background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
+    padding: 20px;
+}
+
+.game-platform {
+    background-color: #f2f2f2;
+    border: 1px solid #e7e7e7;
+    padding: 20px;
+}
+
+.game-platform h2 {
+    margin-top: 0;
+}
+
+.game-screenshot {
+    width: 100%;
+    height: auto;
+    margin: 20px 0;
+}
