@@ -2,12 +2,12 @@
 
 {% block content %}
     <h1>Update</h1>
-    <form method="post">
-        <label for="update-type">Update Type:</label>
-        <select id="update-type" name="update-type">
-            <option value="security">Security</option>
-            <option value="feature">Feature</option>
-        </select><br><br>
-        <input type="submit" value="Update">
-    </form>
+    <div class="update-container">
+        <h2>Update Policy</h2>
+        <p>Updates are performed regularly to ensure the security and stability of our platform.</p>
+        <h2>Update Schedule</h2>
+        <p>Updates are typically performed on Sundays at 2am.</p>
+        <h2>Update Notification</h2>
+        <p>You will be notified via email when an update is available.</p>
+    </div>
 {% endblock %}

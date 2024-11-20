@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>PayPal Payment Processor API Integration</h1>
+    <div class="paypal-payment-processor-api-integration-container">
+        <h2>PayPal Payment Processor API Integration</h2>
+        <p>Integrate our PayPal payment processor API into your application to process payments.</p>
+        <h2>API Endpoints</h2>
+        <table>
+            <tr>
+                <th>Endpoint</th>
+                <th>Method</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>/paypal-payment-processor/process</td>
+                <td>POST</td>
+                <td>Process a payment</td>
+            </tr>
+            <tr>
+                <td>/paypal-payment-processor/refund</td>
+                <td>POST</td>
+                <td>Refund a payment</td>
+            </tr>
+        </table>
+        <h2>API Request Examples</h2>
+        <p>Here are some examples of API requests you can make to our PayPal payment processor API:</p>
+        <pre>
+            // Process a payment
+            curl -X POST \
+              https://example.com/paypal-payment-processor/process \
+              -H 'Content-Type: application/json' \
+              -d '{"amount": 10.99, "currency": "USD"}'
+
+            // Refund a payment
+            curl -X POST \
+              https://example.com/paypal-payment-processor/refund \
+              -H 'Content-Type: application/json' \
+              -d '{"amount": 10.99, "currency": "USD"}'
+        </pre>
+        <h2>API Response Examples</h2>
+        <p>Here are some examples of API responses you can expect from our PayPal payment processor API:</p>
+        <pre>
+            // Process a payment response
+            {
+              "transaction_id": 1,
+              "status": "paid"
+            }
+
+            // Refund a payment response
+            {
+              "transaction_id": 1,
+              "status": "refunded"
+            }
+        </pre>
+    </div>
+{% endblock %}

@@ -2,9 +2,17 @@
 
 {% block content %}
     <h1>User</h1>
-    <div id="user-profile">
+    <div class="user-container">
         <h2>{{ user.username }}</h2>
         <p>{{ user.email }}</p>
-        <button>Edit Profile</button>
+        <ul>
+            {% for tournament in tournaments %}
+                <li>{{ tournament.name }}</li>
+            {% endfor %}
+        </ul>
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" value="Edit Profile">
+        </form>
     </div>
 {% endblock %}

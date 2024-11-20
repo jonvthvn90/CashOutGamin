@@ -5,4 +5,9 @@ Flask-Login==0.5.0
 requests==2.25.1
 twitchio==2.0.0
 paypalrestsdk==1.13.1
-cashapp==1.0.0
+djangorestframework==3.12.4
+django-cors-headers==3.7.0
+psycopg2-binary==2.9.3
+stripe==2.60.0
+paypalrestsdk==1.13.1
+cashapp==0.1.1

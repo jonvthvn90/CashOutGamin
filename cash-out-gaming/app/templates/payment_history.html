@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Payment History</h1>
+    <div class="payment-history-container">
+        <h2>Payment History</h2>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Status</th>
+            </tr>
+            {% for payment in payments %}
+                <tr>
+                    <td>{{ payment.date }}</td>
+                    <td>{{ payment.amount }}</td>
+                    <td>{{ payment.status }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <h2>Filter Payment History</h2>
+        <form method="post">
+            {% csrf_token %}
+            <label for="start_date">Start Date:</label>
+            <input type="date" id="start_date" name="start_date"><br><br>
+            <label for="end_date">End Date:</label>
+            <input type="date" id="end_date" name="end_date"><br><br>
+            <input type="submit" value="Filter">
+        </form>
+    </div>
+{% endblock %}
+
+<script>
+    // Get the form element
+    var form = document.getElementById('payment-history-form');
+
+    // Add event listener to form submit
+    form.addEventListener('submit', function(event) {
+        // Prevent default form submit behavior
+        event.preventDefault();
+
+        // Get the form data
+        var formData = new FormData(form);
+
+        // Send the form data to the server using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/payment-history/', true);
+        xhr.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
+        xhr.send(formData);
+
+        // Handle the server response
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                // Display the filtered payment history
+                var paymentHistory = JSON.parse(xhr.responseText);
+                var table = document.getElementById('payment-history-table');
+                table.innerHTML = '';
+                paymentHistory.forEach(function(payment) {
+                    var row = table.insertRow();
+                    row.innerHTML = '<td>' + payment.date + '</td><td>' + payment.amount + '</td><td>' + payment.status + '</td>';
+                });
+            } else {
+                // Display error message
+                alert('Error: ' + xhr.responseText);
+            }
+        };
+    });
+</script>

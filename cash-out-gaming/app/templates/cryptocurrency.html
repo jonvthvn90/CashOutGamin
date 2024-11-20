@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Cryptocurrency</h1>
+    <div class="cryptocurrency-container">
+        <h2>Buy, Sell, and Trade Cryptocurrency</h2>
+        <p>Use our platform to buy, sell, and trade cryptocurrency.</p>
+        <form method="post">
+            {% csrf_token %}
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount"><br><br>
+            <label for="currency">Currency:</label>
+            <select id="currency" name="currency">
+                <option value="BTC">Bitcoin</option>
+                <option value="ETH">Ethereum</option>
+                <option value="LTC">Litecoin</option>
+            </select><br><br>
+            <label for="action">Action:</label>
+            <select id="action" name="action">
+                <option value="buy">Buy</option>
+                <option value="sell">Sell</option>
+                <option value="trade">Trade</option>
+            </select><br><br>
+            <input type="submit" value="Submit">
+        </form>
+        <h2>Cryptocurrency Prices</h2>
+        <table>
+            <tr>
+                <th>Currency</th>
+                <th>Price</th>
+            </tr>
+            <tr>
+                <td>BTC</td>
+                <td>$10,000</td>
+            </tr>
+            <tr>
+                <td>ETH</td>
+                <td>$500</td>
+            </tr>
+            <tr>
+                <td>LTC</td>
+                <td>$100</td>
+            </tr>
+        </table>
+        <h2>Cryptocurrency News</h2>
+        <ul>
+            <li><a href="#">Bitcoin price surges to new high</a></li>
+            <li><a href="#">Ethereum developer arrested for tax evasion</a></li>
+            <li><a href="#">Litecoin added to major cryptocurrency exchange</a></li>
+        </ul>
+    </div>
+{% endblock %}
+
+<script>
+    // Get the form element
+    var form = document.getElementById('cryptocurrency-form');
+
+    // Add event listener to form submit
+    form.addEventListener('submit', function(event) {
+        // Prevent default form submit behavior
+        event.preventDefault();
+
+        // Get the form data
+        var formData = new FormData(form);
+
+        // Send the form data to the server using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/cryptocurrency/', true);
+        xhr.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
+        xhr.send(formData);
+
+        // Handle the server response
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                // Display success message
+                alert('Cryptocurrency transaction successful!');
+            } else {
+                // Display error message
+                alert('Error: ' + xhr.responseText);
+            }
+        };
+    });
+</script>

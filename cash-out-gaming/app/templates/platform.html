@@ -2,13 +2,17 @@
 
 {% block content %}
     <h1>Platform</h1>
-    <div id="platform-container">
-        {% for platform in platforms %}
-            <div class="platform">
-                <h2>{{ platform.name }}</h2>
-                <p>{{ platform.description }}</p>
-                <button>View</button>
-            </div>
-        {% endfor %}
+    <div class="platform-container">
+        <h2>{{ platform.name }}</h2>
+        <p>{{ platform.description }}</p>
+        <ul>
+            {% for game in games %}
+                <li>{{ game.name }}</li>
+            {% endfor %}
+        </ul>
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" value="Join Platform">
+        </form>
     </div>
 {% endblock %}

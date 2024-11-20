@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Payment Gateway</h1>
+    <div class="payment-gateway-container">
+        <h2>Secure Payment Gateway</h2>
+        <p>Use our secure payment gateway to make payments.</p>
+        <form method="post">
+            {% csrf_token %}
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount"><br><br>
+            <label for="payment_method">Payment Method:</label>
+            <select id="payment_method" name="payment_method">
+                <option value="credit_card">Credit Card</option>
+                <option value="paypal">PayPal</option>
+                <option value="bank_transfer">Bank Transfer</option>
+            </select><br><br>
+            <input type="submit" value="Submit">
+        </form>
+        <h2>Payment Gateway Fees</h2>
+        <table>
+            <tr>
+                <th>Payment Method</th>
+                <th>Fee</th>
+            </tr>
+            <tr>
+                <td>Credit Card</td>
+                <td>2.9% + $0.30</td>
+            </tr>
+            <tr>
+                <td>PayPal</td>
+                <td>2.9% + $0.30</td>
+            </tr>
+            <tr>
+                <td>Bank Transfer</td>
+                <td>$10.00</td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}
+
+<script>
+    // Get the form element
+    var form = document.getElementById('payment-gateway-form');
+
+    // Add event listener to form submit
+    form.addEventListener('submit', function(event) {
+        // Prevent default form submit behavior
+        event.preventDefault();
+
+        // Get the form data
+        var formData = new FormData(form);
+
+        // Send the form data to the server using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/payment-gateway/', true);
+        xhr.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
+        xhr.send(formData);
+
+        // Handle the server response
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                // Display success message
+                alert('Payment successful!');
+            } else {
+                // Display error message
+                alert('Error: ' + xhr.responseText);
+            }
+        };
+    });
+</script>

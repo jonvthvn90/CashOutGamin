@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Payment Status</h1>
+    <div class="payment-status-container">
+        <h2>Payment Status</h2>
+        <p>Status: {{ payment_status }}</p>
+        <h2>Payment History</h2>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Status</th>
+            </tr>
+            {% for payment in payments %}
+                <tr>
+                    <td>{{ payment.date }}</td>
+                    <td>{{ payment.amount }}</td>
+                    <td>{{ payment.status }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

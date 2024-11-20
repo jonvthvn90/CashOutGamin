@@ -3,10 +3,11 @@
 {% block content %}
     <h1>Email</h1>
     <form method="post">
+        {% csrf_token %}
         <label for="subject">Subject:</label>
         <input type="text" id="subject" name="subject"><br><br>
-        <label for="body">Body:</label>
-        <textarea id="body" name="body"></textarea><br><br>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message"></textarea><br><br>
         <input type="submit" value="Send Email">
     </form>
 {% endblock %}

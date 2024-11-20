@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Affiliate Program</h1>
+    <div class="affiliate-container">
+        <h2>Join Our Affiliate Program</h2>
+        <p>Earn commissions by promoting our platform to your audience.</p>
+        <form method="post">
+            {% csrf_token %}
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br><br>
+            <label for="website">Website:</label>
+            <input type="text" id="website" name="website"><br><br>
+            <input type="submit" value="Join Affiliate Program">
+        </form>
+        <h2>Affiliate Terms and Conditions</h2>
+        <p>By joining our affiliate program, you agree to our terms and conditions.</p>
+        <ul>
+            <li>You must be at least 18 years old to join our affiliate program.</li>
+            <li>You must have a valid website or social media presence to promote our platform.</li>
+            <li>You must comply with all applicable laws and regulations.</li>
+        </ul>
+    </div>
+{% endblock %}

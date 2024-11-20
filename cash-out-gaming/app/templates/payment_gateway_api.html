@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Payment Gateway API</h1>
+    <div class="payment-gateway-api-container">
+        <h2>Payment Gateway API</h2>
+        <p>Use our payment gateway API to integrate our payment gateway into your application.</p>
+        <h2>API Endpoints</h2>
+        <table>
+            <tr>
+                <th>Endpoint</th>
+                <th>Method</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>/payment-gateway/charge</td>
+                <td>POST</td>
+                <td>Charge a customer's credit card</td>
+            </tr>
+            <tr>
+                <td>/payment-gateway/refund</td>
+                <td>POST</td>
+                <td>Refund a customer's credit card</td>
+            </tr>
+        </table>
+        <h2>API Documentation</h2>
+        <p>For more information on our payment gateway API, please refer to our API documentation.</p>
+    </div>
+{% endblock %}

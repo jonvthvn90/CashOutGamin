@@ -1,10 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Matches</h1>
-    <ul>
-    {% for match in matches %}
-        <li>{{ match.team1 }} vs {{ match.team2 }} ({{ match.score1 }} - {{ match.score2 }})</li>
-    {% endfor %}
-    </ul>
+    <h1>Match</h1>
+    <div class="match-container">
+        <h2>{{ match.name }}</h2>
+        <p>{{ match.description }}</p>
+        <ul>
+            {% for player in players %}
+                <li>{{ player.username }}</li>
+            {% endfor %}
+        </ul>
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" value="Join Match">
+        </form>
+    </div>
 {% endblock %}

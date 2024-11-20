@@ -2,12 +2,19 @@
 
 {% block content %}
     <h1>Error Log</h1>
-    <div id="error-log-container">
-        {% for error in errors %}
-            <div class="error">
-                <h2>{{ error.date }}</h2>
-                <p>{{ error.message }}</p>
-            </div>
-        {% endfor %}
+    <div class="error-log-container">
+        <h2>Error Log</h2>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Error</th>
+            </tr>
+            {% for error in error_log %}
+                <tr>
+                    <td>{{ error.date }}</td>
+                    <td>{{ error.error }}</td>
+                </tr>
+            {% endfor %}
+        </table>
     </div>
 {% endblock %}

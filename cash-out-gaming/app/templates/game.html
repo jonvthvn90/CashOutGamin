@@ -2,13 +2,17 @@
 
 {% block content %}
     <h1>Game</h1>
-    <div id="game-container">
-        {% for game in games %}
-            <div class="game">
-                <h2>{{ game.name }}</h2>
-                <p>{{ game.description }}</p>
-                <button>Play</button>
-            </div>
-        {% endfor %}
+    <div class="game-container">
+        <h2>{{ game.name }}</h2>
+        <p>{{ game.description }}</p>
+        <ul>
+            {% for player in players %}
+                <li>{{ player.username }}</li>
+            {% endfor %}
+        </ul>
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" value="Play Game">
+        </form>
     </div>
 {% endblock %}

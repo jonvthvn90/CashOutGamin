@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Loyalty Program</h1>
+    <div class="loyalty-container">
+        <h2>Earn Rewards</h2>
+        <p>Earn points for every purchase, referral, and engagement.</p>
+        <table>
+            <tr>
+                <th>Action</th>
+                <th>Points</th>
+            </tr>
+            <tr>
+                <td>Purchase</td>
+                <td>10 points</td>
+            </tr>
+            <tr>
+                <td>Referral</td>
+                <td>20 points</td>
+            </tr>
+            <tr>
+                <td>Engagement</td>
+                <td>5 points</td>
+            </tr>
+        </table>
+        <h2>Reward Tiers</h2>
+        <table>
+            <tr>
+                <th>Tier</th>
+                <th>Points Required</th>
+                <th>Reward</th>
+            </tr>
+            <tr>
+                <td>Bronze</td>
+                <td>100 points</td>
+                <td>10% discount on next purchase</td>
+            </tr>
+            <tr>
+                <td>Silver</td>
+                <td>500 points</td>
+                <td>20% discount on next purchase</td>
+            </tr>
+            <tr>
+                <td>Gold</td>
+                <td>1,000 points</td>
+                <td>30% discount on next purchase</td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

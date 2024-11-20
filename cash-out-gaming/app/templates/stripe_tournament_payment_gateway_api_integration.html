@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Stripe Tournament Payment Gateway API Integration</h1>
+    <div class="stripe-tournament-payment-gateway-api-integration-container">
+        <h2>Stripe Tournament Payment Gateway API Integration</h2>
+        <p>Integrate our Stripe tournament payment gateway API into your application to process payments for tournaments.</p>
+        <h2>API Endpoints</h2>
+        <table>
+            <tr>
+                <th>Endpoint</th>
+                <th>Method</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>/stripe-tournament-payment-gateway/charge</td>
+                <td>POST</td>
+                <td>Charge a customer's credit card for a tournament</td>
+            </tr>
+            <tr>
+                <td>/stripe-tournament-payment-gateway/refund</td>
+                <td>POST</td>
+                <td>Refund a customer's credit card for a tournament</td>
+            </tr>
+        </table>
+        <h2>API Request Examples</h2>
+        <p>Here are some examples of API requests you can make to our Stripe tournament payment gateway API:</p>
+        <pre>
+            // Charge a customer's credit card for a tournament
+            curl -X POST \
+              https://example.com/stripe-tournament-payment-gateway/charge \
+              -H 'Content-Type: application/json' \
+              -d '{"amount": 10.99, "currency": "USD", "tournament_id": 1}'
+
+            // Refund a customer's credit card for a tournament
+            curl -X POST \
+              https://example.com/stripe-tournament-payment-gateway/refund \
+              -H 'Content-Type: application/json' \
+              -d '{"amount": 10.99, "currency": "USD", "tournament_id": 1}'
+        </pre>
+        <h2>API Response Examples</h2>
+        <p>Here are some examples of API responses you can expect from our Stripe tournament payment gateway API:</p>
+        <pre>
+            // Charge a customer's credit card for a tournament response
+            {
+              "transaction_id": 1,
+              "status": "paid"
+            }
+
+            // Refund a customer's credit card for a tournament response
+            {
+              "transaction_id": 1,
+              "status": "refunded"
+            }
+        </pre>
+    </div>
+{% endblock %}

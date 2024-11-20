@@ -1,0 +1,8 @@
+team1,team2,score
+Team A,Team B,1
+Team A,Team C,0
+Team B,Team C,1
+Team A,Team D,1
+Team B,Team D,0
+Team C,Team D,1
+...

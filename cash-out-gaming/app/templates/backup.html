@@ -2,12 +2,12 @@
 
 {% block content %}
     <h1>Backup</h1>
-    <form method="post">
-        <label for="backup-type">Backup Type:</label>
-        <select id="backup-type" name="backup-type">
-            <option value="full">Full</option>
-            <option value="incremental">Incremental</option>
-        </select><br><br>
-        <input type="submit" value="Backup">
-    </form>
+    <div class="backup-container">
+        <h2>Backup Policy</h2>
+        <p>Backups are performed daily at 2am.</p>
+        <h2>Backup Retention</h2>
+        <p>Backups are retained for 30 days.</p>
+        <h2>Backup Restoration</h2>
+        <p>To restore a backup, please contact our support team.</p>
+    </div>
 {% endblock %}

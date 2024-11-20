@@ -1,17 +1,39 @@
-from django.shortcuts import render
-from .models import Post
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from .models import BlogPost
+from .forms import BlogPostForm
 
-def blog(request):
-    posts = Post.objects.all()
+def blog_view(request):
+    posts = BlogPost.objects.all()
     return render(request, 'blog.html', {'posts': posts})
 
-def post(request, post_id):
-    post = Post.objects.get(id=post_id)
-    return render(request, 'post.html', {'post': post})
-
+@login_required
 def create_post(request):
     if request.method == 'POST':
-        post = Post(title=request.POST['title'], content=request.POST['content'], user=request.user)
-        post.save()
-        return redirect('blog')
-    return render(request, 'create_post.html')
+        form = BlogPostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user
+            post.save()
+            return redirect('blog_view')
+    else:
+        form = BlogPostForm()
+    return render(request, 'create_post.html', {'form': form})
+
+@login_required
+def edit_post(request, post_id):
+    post = BlogPost.objects.get(id=post_id)
+    if request.method == 'POST':
+        form = BlogPostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('blog_view')
+    else:
+        form = BlogPostForm(instance=post)
+    return render(request, 'edit_post.html', {'form': form})
+
+@login_required
+def delete_post(request, post_id):
+    post = BlogPost.objects.get(id=post_id)
+    post.delete()
+    return redirect('blog_view')

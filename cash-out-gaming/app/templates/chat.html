@@ -2,14 +2,16 @@
 
 {% block content %}
     <h1>Chat</h1>
-    <div id="chat-log">
-        {% for message in chat_log %}
-            <p>{{ message }}</p>
-        {% endfor %}
+    <div class="chat-container">
+        <ul>
+            {% for message in messages %}
+                <li>{{ message.text }}</li>
+            {% endfor %}
+        </ul>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" id="message" name="message" placeholder="Type a message...">
+            <input type="submit" value="Send">
+        </form>
     </div>
-    <form method="post">
-        <label for="message">Message:</label>
-        <input type="text" id="message" name="message"><br><br>
-        <input type="submit" value="Send">
-    </form>
 {% endblock %}

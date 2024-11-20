@@ -2,12 +2,79 @@
 
 {% block content %}
     <h1>Analytics</h1>
-    <div id="analytic-container">
-        {% for analytic in analytics %}
-            <div class="analytic">
-                <h2>{{ analytic.name }}</h2>
-                <p>{{ analytic.data }}</p>
-            </div>
-        {% endfor %}
+    <div class="analytic-container">
+        <h2>Website Traffic</h2>
+        <canvas id="traffic-chart" width="400" height="200"></canvas>
+        <h2>User Engagement</h2>
+        <canvas id="engagement-chart" width="400" height="200"></canvas>
+        <h2>Top Pages</h2>
+        <table>
+            <tr>
+                <th>Page</th>
+                <th>Views</th>
+            </tr>
+            {% for page in top_pages %}
+                <tr>
+                    <td>{{ page.name }}</td>
+                    <td>{{ page.views }}</td>
+                </tr>
+            {% endfor %}
+        </table>
     </div>
 {% endblock %}
+
+<script>
+    // Get the traffic chart canvas element
+    var trafficChart = document.getElementById('traffic-chart').getContext('2d');
+
+    // Create a new chart
+    var chart = new Chart(trafficChart, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [{
+                label: 'Traffic',
+                data: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+    // Get the engagement chart canvas element
+    var engagementChart = document.getElementById('engagement-chart').getContext('2d');
+
+    // Create a new chart
+    var chart = new Chart(engagementChart, {
+        type: 'bar',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [{
+                label: 'Engagement',
+                data: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>

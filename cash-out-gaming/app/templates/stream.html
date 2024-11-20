@@ -2,8 +2,22 @@
 
 {% block content %}
     <h1>Stream</h1>
-    <video width="640" height="480" controls>
-        <source src="{{ stream_url }}" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <div class="stream-container">
+        <video id="stream-video" width="640" height="480" controls>
+            <source src="{{ stream.stream_url }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="stream-chat">
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message.text }}</li>
+                {% endfor %}
+            </ul>
+            <form method="post">
+                {% csrf_token %}
+                <input type="text" id="message" name="message" placeholder="Type a message...">
+                <input type="submit" value="Send">
+            </form>
+        </div>
+    </div>
 {% endblock %}

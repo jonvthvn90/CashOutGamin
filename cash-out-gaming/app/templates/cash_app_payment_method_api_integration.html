@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Cash App Payment Method API Integration</h1>
+    <div class="cash-app-payment-method-api-integration-container">
+        <h2>Cash App Payment Method API Integration</h2>
+        <p>Integrate our Cash App payment method API into your application to retrieve payment methods.</p>
+        <h2>API Endpoints</h2>
+        <table>
+            <tr>
+                <th>Endpoint</th>
+                <th>Method</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>/cash-app-payment-method</td>
+                <td>GET</td>
+                <td>Retrieve payment methods</td>
+            </tr>
+            <tr>
+                <td>/cash-app-payment-method/{id}</td>
+                <td>GET</td>
+                <td>Retrieve a payment method by ID</td>
+            </tr>
+        </table>
+        <h2>API Request Examples</h2>
+        <p>Here are some examples of API requests you can make to our Cash App payment method API:</p>
+        <pre>
+            // Retrieve payment methods
+            curl -X GET \
+              https://example.com/cash-app-payment-method \
+              -H 'Content-Type: application/json'
+
+            // Retrieve a payment method by ID
+            curl -X GET \
+              https://example.com/cash-app-payment-method/1 \
+              -H 'Content-Type: application/json'
+        </pre>
+        <h2>API Response Examples</h2>
+        <p>Here are some examples of API responses you can expect from our Cash App payment method API:</p>
+        <pre>
+            // Retrieve payment methods response
+            {
+              "payment_methods": [
+                {
+                  "id": 1,
+                  "name": "Cash App"
+                }
+              ]
+            }
+
+            // Retrieve a payment method by ID response
+            {
+              "id": 1,
+              "name": "Cash App"
+            }
+        </pre>
+    </div>
+{% endblock %}

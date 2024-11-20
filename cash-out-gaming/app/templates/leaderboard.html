@@ -2,8 +2,18 @@
 
 {% block content %}
     <h1>Leaderboard</h1>
-    <ul>
-    {% for leaderboard in leaderboards %}
-        <li>{{ leaderboard.user.username }} ({{ leaderboard.score }})</li>
-    {% endfor %}
-    </ul
+    <table>
+        <tr>
+            <th>Rank</th>
+            <th>Username</th>
+            <th>Score</th>
+        </tr>
+        {% for leaderboard in leaderboards %}
+            <tr>
+                <td>{{ leaderboard.rank }}</td>
+                <td>{{ leaderboard.user.username }}</td>
+                <td>{{ leaderboard.score }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

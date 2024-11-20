@@ -1,2 +1,2 @@
-from .models import Post
-from .views import blog, post
+from .models import BlogPost
+from .views import BlogView

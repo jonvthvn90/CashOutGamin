@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Wager</h1>
+    <h1>Wagers</h1>
+    <ul>
+        {% for wager in wagers %}
+            <li>{{ wager.name }} ({{ wager.amount }})</li>
+        {% endfor %}
+    </ul>
     <form method="post">
+        {% csrf_token %}
+        <label for="wager_name">Create Wager:</label>
+        <input type="text" id="wager_name" name="wager_name"><br><br>
         <label for="amount">Amount:</label>
         <input type="number" id="amount" name="amount"><br><br>
-        <label for="game">Game:</label>
-        <input type="text" id="game" name="game"><br><br>
-        <input type="submit" value="Wager">
+        <input type="submit" value="Create">
     </form>
 {% endblock %}

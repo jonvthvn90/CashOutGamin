@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Payment Processor API</h1>
+    <div class="payment-processor-api-container">
+        <h2>Payment Processor API</h2>
+        <p>Use our payment processor API to integrate our payment processor into your application.</p>
+        <h2>API Endpoints</h2>
+        <table>
+            <tr>
+                <th>Endpoint</th>
+                <th>Method</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>/payment-processor/process</td>
+                <td>POST</td>
+                <td>Process a payment</td>
+            </tr>
+            <tr>
+                <td>/payment-processor/refund</td>
+                <td>POST</td>
+                <td>Refund a payment</td>
+            </tr>
+        </table>
+        <h2>API Documentation</h2>
+        <p>For more information on our payment processor API, please refer to our API documentation.</p>
+    </div>
+{% endblock %}

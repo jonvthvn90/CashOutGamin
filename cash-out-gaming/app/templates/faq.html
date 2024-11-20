@@ -1,13 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>FAQ</h1>
-    <div id="faq-container">
-        {% for faq in faqs %}
-            <div class="faq">
-                <h2>{{ faq.question }}</h2>
-                <p>{{ faq.answer }}</p>
-            </div>
-        {% endfor %}
-    </div>
+    <h1>Frequently Asked Questions</h1>
+    <ul>
+        <li><strong>Q: What is this website?</strong> A: This website is a platform for users to participate in tournaments and competitions.</li>
+        <li><strong>Q: How do I create an account?</strong> A: To create an account, click on the "Register" button in the top right corner of the page and follow the instructions.</li>
+        <li><strong>Q: How do I reset my password?</strong> A: To reset your password, click on the "Forgot Password" button on the login page and follow the instructions.</li>
+    </ul>
 {% endblock %}

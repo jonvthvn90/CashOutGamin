@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Forum</h1>
-    <ul>
-        {% for thread in threads %}
-            <li>
-                <a href="{% url 'thread' thread.id %}">{{ thread.title }}</a>
-            </li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'create_thread' %}">Create Thread</a>
+  <h1>Forums</h1>
+  <ul>
+    {% for forum in forums %}
+      <li>
+        <a href="{% url 'thread_view' forum.id %}">{{ forum.name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
 {% endblock %}

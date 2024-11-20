@@ -2,12 +2,9 @@
 
 {% block content %}
     <h1>Log</h1>
-    <div id="log-container">
+    <ul>
         {% for log in logs %}
-            <div class="log">
-                <h2>{{ log.date }}</h2>
-                <p>{{ log.message }}</p>
-            </div>
+            <li>{{ log.message }} ({{ log.date }})</li>
         {% endfor %}
-    </div>
+    </ul>
 {% endblock %}

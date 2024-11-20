@@ -3,12 +3,13 @@
 {% block content %}
     <h1>Payout</h1>
     <form method="post">
+        {% csrf_token %}
         <label for="amount">Amount:</label>
         <input type="number" id="amount" name="amount"><br><br>
         <label for="payout_method">Payout Method:</label>
         <select id="payout_method" name="payout_method">
             <option value="paypal">PayPal</option>
-            <option value="bank_transfer">Bank Transfer</option>
+            <option value="stripe">Stripe</option>
         </select><br><br>
         <input type="submit" value="Payout">
     </form>

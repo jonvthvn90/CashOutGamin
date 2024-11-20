@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Payment Settings</h1>
+    <div class="payment-settings-container">
+        <h2>Payment Settings</h2>
+        <form method="post">
+            {% csrf_token %}
+            <label for="payment_gateway">Payment Gateway:</label>
+            <select id="payment_gateway" name="payment_gateway">
+                <option value="stripe">Stripe</option>
+                <option value="paypal">PayPal</option>
+            </select><br><br>
+            <label for="payment_processor">Payment Processor:</label>
+            <select id="payment_processor" name="payment_processor">
+                <option value="stripe">Stripe</option>
+                <option value="paypal">PayPal</option>
+            </select><br><br>
+            <label for="payment_method">Payment Method:</label>
+            <select id="payment_method" name="payment_method">
+                <option value="credit_card">Credit Card</option>
+                <option value="paypal">PayPal</option>
+            </select><br><br>
+            <input type="submit" value="Save Changes">
+        </form>
+    </div>
+{% endblock %}
+
+<script>
+    // Get the form element
+    var form = document.getElementById('payment-settings-form');
+
+    // Add event listener to form submit
+    form.addEventListener('submit', function(event) {
+        // Prevent default form submit behavior
+        event.preventDefault();
+
+        // Get the form data
+        var formData = new FormData(form);
+
+        // Send the form data to the server using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/payment-settings/', true);
+        xhr.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
+        xhr.send(formData);
+
+        // Handle the server response
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                // Display success message
+                alert('Payment settings updated successfully!');
+            } else {
+                // Display error message
+                alert('Error: ' + xhr.responseText);
+            }
+        };
+    });
+</script>

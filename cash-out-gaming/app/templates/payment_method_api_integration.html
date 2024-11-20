@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Payment Method API Integration</h1>
+    <div class="payment-method-api-integration-container">
+        <h2>Payment Method API Integration</h2>
+        <p>Integrate our payment method API into your application to retrieve payment methods.</p>
+        <h2>API Endpoints</h2>
+        <table>
+            <tr>
+                <th>Endpoint</th>
+                <th>Method</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>/payment-method</td>
+                <td>GET</td>
+                <td>Retrieve payment methods</td>
+            </tr>
+            <tr>
+                <td>/payment-method/{id}</td>
+                <td>GET</td>
+                <td>Retrieve a payment method by ID</td>
+            </tr>
+            <tr>
+                <td>/payment-method</td>
+                <td>POST</td>
+                <td>Create a new payment method</td>
+            </tr>
+            <tr>
+                <td>/payment-method/{id}</td>
+                <td>PUT</td>
+                <td>Update a payment method</td>
+            </tr>
+            <tr>
+                <td>/payment-method/{id}</td>
+                <td>DELETE</td>
+                <td>Delete a payment method</td>
+            </tr>
+        </table>
+        <h2>API Request Examples</h2>
+        <p>Here are some examples of API requests you can make to our payment method API:</p>
+        <pre>
+            // Retrieve payment methods
+            curl -X GET \
+              https://example.com/payment-method \
+              -H 'Content-Type: application/json'
+
+            // Retrieve a payment method by ID
+            curl -X GET \
+              https://example.com/payment-method/1 \
+              -H 'Content-Type: application/json'
+
+            // Create a new payment method
+            curl -X POST \
+              https://example.com/payment-method \
+              -H 'Content-Type: application/json' \
+              -d '{"name": "Credit Card", "description": "A credit card payment method"}'
+
+            // Update a payment method
+            curl -X PUT \
+              https://example.com/payment-method/1 \
+              -H 'Content-Type: application/json' \
+              -d '{"name": "Updated Credit Card", "description": "An updated credit card payment method"}'
+
+            // Delete a payment method
+            curl -X DELETE \
+              https://example.com/payment-method/1 \
+              -H 'Content-Type: application/json'
+        </pre>
+        <h2>API Response Examples</h2>
+        <p>Here are some examples of API responses you can expect from our payment method API:</p>
+        <pre>
+            // Retrieve payment methods response
+            {
+              "payment_methods": [
+                {
+                  "id": 1,
+                  "name": "Credit Card"
+                },
+                {
+                  "id": 2,
+                  "name": "PayPal"
+                }
+              ]
+            }
+
+            // Retrieve a payment method by ID response
+            {
+              "id": 1,
+              "name": "Credit Card"
+            }
+
+            // Create a new payment method response
+            {
+              "id": 3,
+              "name": "Credit Card"
+            }
+
+            // Update a payment method response
+            {
+              "id": 1,
+              "name": "Updated Credit Card"
+            }
+
+            // Delete a payment method response
+            {
+              "message": "Payment method deleted successfully"
+            }
+        </pre>
+    </div>
+{% endblock %}

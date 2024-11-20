@@ -2,12 +2,12 @@
 
 {% block content %}
     <h1>Maintenance</h1>
-    <div id="maintenance-container">
-        {% for maintenance in maintenances %}
-            <div class="maintenance">
-                <h2>{{ maintenance.name }}</h2>
-                <p>{{ maintenance.description }}</p>
-            </div>
-        {% endfor %}
+    <div class="maintenance-container">
+        <h2>Maintenance Policy</h2>
+        <p>Maintenance is performed regularly to ensure the security and stability of our platform.</p>
+        <h2>Maintenance Schedule</h2>
+        <p>Maintenance is typically performed on Sundays at 2am.</p>
+        <h2>Maintenance Notification</h2>
+        <p>You will be notified via email when maintenance is scheduled.</p>
     </div>
 {% endblock %}

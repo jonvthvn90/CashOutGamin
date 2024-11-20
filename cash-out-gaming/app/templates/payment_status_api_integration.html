@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Payment Status API Integration</h1>
+    <div class="payment-status-api-integration-container">
+        <h2>Payment Status API Integration</h2>
+        <p>Integrate our payment status API into your application to retrieve the status of a payment.</p>
+        <h2>API Endpoints</h2>
+        <table>
+            <tr>
+                <th>Endpoint</th>
+                <th>Method</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>/payment-status</td>
+                <td>GET</td>
+                <td>Retrieve the status of a payment</td>
+            </tr>
+            <tr>
+                <td>/payment-status/{id}</td>
+                <td>GET</td>
+                <td>Retrieve the status of a payment by ID</td>
+            </tr>
+        </table>
+        <h2>API Request Examples</h2>
+        <p>Here are some examples of API requests you can make to our payment status API:</p>
+        <pre>
+            // Retrieve the status of a payment
+            curl -X GET \
+              https://example.com/payment-status \
+              -H 'Content-Type: application/json'
+
+            // Retrieve the status of a payment by ID
+            curl -X GET \
+              https://example.com/payment-status/1 \
+              -H 'Content-Type: application/json'
+        </pre>
+        <h2>API Response Examples</h2>
+        <p>Here are some examples of API responses you can expect from our payment status API:</p>
+        <pre>
+            // Retrieve the status of a payment response
+            {
+              "payment_status": "paid"
+            }
+
+            // Retrieve the status of a payment by ID response
+            {
+              "id": 1,
+              "payment_status": "paid"
+            }
+        </pre>
+    </div>
+{% endblock %}
