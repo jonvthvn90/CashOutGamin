@@ -1,0 +1,6 @@
+{
+    "name": "cash-out-gaming",
+    "type": "CNAME",
+    "content": "cdn.cashoutgaming.com",
+    "proxied": true
+  }

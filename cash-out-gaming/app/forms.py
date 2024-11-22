@@ -3,7 +3,17 @@ from .models import User, Profile
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField
 from wtforms.validators import DataRequired
+from .models import Post, Comment
 
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'content']
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']
 class UserForm(forms.ModelForm):
     class Meta:
         model = User

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PaymentGatewayAPIIntegration>
+  <PaymentMethods>
+    <PaymentMethod>...</PaymentMethod>
+  </PaymentMethods>
+  <Currencies>
+    <Currency>...</Currency>
+  </Currencies>
+  <Languages>
+    <Language>...</Language>
+  </Languages>
+  <PaymentPlans>
+    <PaymentPlan>...</PaymentPlan>
+  </PaymentPlans>
+  <SubscriptionPlans>
+    <SubscriptionPlan>...</SubscriptionPlan>
+  </SubscriptionPlans>
+  <RecurringPayments>
+    <RecurringPayment>...</RecurringPayment>
+  </RecurringPayments>
+  <PaymentSchedules>
+    <PaymentSchedule>...</PaymentSchedule>
+  </PaymentSchedules>
+  <PaymentReminders>
+    <PaymentReminder>...</PaymentReminder>
+  </PaymentReminders>
+  <PaymentNotifications>
+    <PaymentNotification>...</PaymentNotification>
+  </PaymentNotifications>
+  <PaymentConfirmations>
+    <PaymentConfirmation>...</PaymentConfirmation>
+  </PaymentConfirmations>
+  <PaymentReceipts>
+    <PaymentReceipt>...</PaymentReceipt>
+  </PaymentReceipts>
+  <PaymentDisputes>
+    <PaymentDispute>...</PaymentDispute>
+  </PaymentDisputes>
+</PaymentGatewayAPIIntegration>

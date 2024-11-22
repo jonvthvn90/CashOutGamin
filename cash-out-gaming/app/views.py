@@ -12,7 +12,36 @@ from flask_login import login_user, logout_user, login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Tournament, Match, Leaderboard, Challenge, Wager, Stream, Chat, Payment, Payout
+from .models import Post, Comment
+from .forms import PostForm, CommentForm
 
+def index(request):
+    posts = Post.objects.all()
+    return render(request, 'index.html', {'posts': posts})
+
+@login_required
+def create_post(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = PostForm()
+    return render(request, 'create_post.html', {'form': form})
+
+@login_required
+def post(request, pk):
+    post = Post.objects.get(pk=pk)
+    comments = post.comment_set.all()
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('post', pk=pk)
+    else:
+        form = CommentForm()
+    return render(request, 'post.html', {'post': post, 'comments': comments, 'form': form})
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -121,7 +150,7 @@ def leaderboard(tournament_id):
     leaderboards = Leaderboard.query.filter_by(tournament_id=tournament_id).all()
     return render_template('leaderboard.html', leaderboards=leaderboards)
 
-ef index(request):
+def index(request):
     return render(request, 'app/index.html')
 
 @login_required

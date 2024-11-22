@@ -1,0 +1,13 @@
+import os
+
+# Twitch API settings
+TWITCH_CLIENT_ID = os.environ['TWITCH_CLIENT_ID']
+TWITCH_CLIENT_SECRET = os.environ['TWITCH_CLIENT_SECRET']
+
+# PayPal API settings
+PAYPAL_CLIENT_ID = os.environ['PAYPAL_CLIENT_ID']
+PAYPAL_CLIENT_SECRET = os.environ['PAYPAL_CLIENT_SECRET']
+
+# Cash App API settings
+CASHAPP_CLIENT_ID = os.environ['CASHAPP_CLIENT_ID']
+CASHAPP_CLIENT_SECRET = os.environ['CASHAPP_CLIENT_SECRET']

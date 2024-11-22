@@ -1,0 +1,14 @@
+{
+    "paymentMethods": [...],
+    "currencies": [...],
+    "languages": [...],
+    "paymentPlans": [...],
+    "subscriptionPlans": [...],
+    "recurringPayments": [...],
+    "paymentSchedules": [...],
+    "paymentReminders": [...],
+    "paymentNotifications": [...],
+    "paymentConfirmations": [...],
+    "paymentReceipts": [...],
+    "paymentDisputes": [...]
+  }

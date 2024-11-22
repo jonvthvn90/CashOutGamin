@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.example.com/PaymentGatewayAPIIntegration"
+           xmlns:tns="http://www.example.com/PaymentGatewayAPIIntegration"
+           elementFormDefault="qualified">
+  <xs:element name="PaymentGatewayAPIIntegration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="PaymentMethods" type="tns:PaymentMethodsType"/>
+        <xs:element name="Currencies" type="tns:CurrenciesType"/>
+        <xs:element name="Languages" type="tns:LanguagesType"/>
+        <xs:element name="PaymentPlans" type="tns:PaymentPlansType"/>
+        <xs:element name="SubscriptionPlans" type="tns:SubscriptionPlansType"/>
+        <xs:element name="RecurringPayments" type="tns:RecurringPaymentsType"/>
+        <xs:element name="PaymentSchedules" type="tns:PaymentSchedulesType"/>
+        <xs:element name="PaymentReminders" type="tns:PaymentRemindersType"/>
+        <xs:element name="PaymentNotifications" type="tns:PaymentNotificationsType"/>
+        <xs:element name="PaymentConfirmations" type="tns:PaymentConfirmationsType"/>
+        <xs:element name="PaymentReceipts" type="tns:PaymentReceiptsType"/>
+        <xs:element name="PaymentDisputes" type="tns:PaymentDisputesType"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="PaymentMethodsType">
+    <xs:sequence>
+      <xs:element name="PaymentMethod" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CurrenciesType">
+    <xs:sequence>
+      <xs:element name="Currency" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LanguagesType">
+    <xs:sequence>
+      <xs:element name="Language" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PaymentPlansType">
+    <xs:sequence>
+      <xs:element name="PaymentPlan" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionPlansType">
+    <xs:sequence>
+      <xs:element name="SubscriptionPlan" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RecurringPaymentsType">
+    <xs:sequence>
+      <xs:element name="RecurringPayment" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PaymentSchedulesType">
+    <xs:sequence>
+      <xs:element name="PaymentSchedule" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PaymentRemindersType">
+    <xs:sequence>
+      <xs:element name="PaymentReminder" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PaymentNotificationsType">
+    <xs:sequence>
+      <xs:element name="PaymentNotification" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PaymentConfirmationsType">
+    <xs:sequence>
+      <xs:element name="PaymentConfirmation" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PaymentReceiptsType">
+    <xs:sequence>
+      <xs:element name="PaymentReceipt" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PaymentDisputesType">
+    <xs:sequence>
+      <xs:element name="PaymentDispute" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -11,3 +11,5 @@ psycopg2-binary==2.9.3
 stripe==2.60.0
 paypalrestsdk==1.13.1
 cashapp==0.1.1
+Django==3.2.5
+psycopg2-binary==2.9.3

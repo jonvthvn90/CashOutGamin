@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  PayPal Match Payment Processor API Integration
+  {% csrf_token %}
+  Payment Method: {% for payment_method in payment_methods %} {{ payment_method }} {% endfor %}
+  Currency: {% for currency in currencies %} {{ currency }} {% endfor %}
+  Language: {% for language in languages %} {{ language }} {% endfor %}
+  Payment Plan: {% for payment_plan in payment_plans %} {{ payment_plan }} {% endfor %}
+  Subscription Plan: {% for subscription_plan in subscription_plans %} {{ subscription_plan }} {% endfor %}
+  Recurring Payment: {% for recurring_payment in recurring_payments %} {{ recurring_payment }} {% endfor %}
+  Payment Schedule: {% for payment_schedule in payment_schedules %} {{ payment_schedule }} {% endfor %}
+  Payment Reminder: {% for payment_reminder in payment_reminders %} {{ payment_reminder }} {% endfor %}
+  Payment Notification: {% for payment_notification in payment_notifications %} {{ payment_notification }} {% endfor %}
+  Payment Confirmation: {% for payment_confirmation in payment_confirmations %} {{ payment_confirmation }} {% endfor %}
+  Payment Receipt: {% for payment_receipt in payment_receipts %} {{ payment_receipt }} {% endfor %}
+  Payment Dispute: {% for payment_dispute in payment_disputes %} {{ payment_dispute }} {% endfor %}
+  Submit
+{% endblock %}

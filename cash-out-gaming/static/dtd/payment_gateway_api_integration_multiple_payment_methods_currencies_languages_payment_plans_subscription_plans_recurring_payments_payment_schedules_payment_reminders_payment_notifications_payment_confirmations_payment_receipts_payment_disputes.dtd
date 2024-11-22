@@ -1,0 +1,25 @@
+<!ELEMENT PaymentGatewayAPIIntegration (PaymentMethods, Currencies, Languages, PaymentPlans, SubscriptionPlans, RecurringPayments, PaymentSchedules, PaymentReminders, PaymentNotifications, PaymentConfirmations, PaymentReceipts, PaymentDisputes)>
+<!ELEMENT PaymentMethods (PaymentMethod+)>
+<!ELEMENT PaymentMethod (#PCDATA)>
+<!ELEMENT Currencies (Currency+)>
+<!ELEMENT Currency (#PCDATA)>
+<!ELEMENT Languages (Language+)>
+<!ELEMENT Language (#PCDATA)>
+<!ELEMENT PaymentPlans (PaymentPlan+)>
+<!ELEMENT PaymentPlan (#PCDATA)>
+<!ELEMENT SubscriptionPlans (SubscriptionPlan+)>
+<!ELEMENT SubscriptionPlan (#PCDATA)>
+<!ELEMENT RecurringPayments (RecurringPayment+)>
+<!ELEMENT RecurringPayment (#PCDATA)>
+<!ELEMENT PaymentSchedules (PaymentSchedule+)>
+<!ELEMENT PaymentSchedule (#PCDATA)>
+<!ELEMENT PaymentReminders (PaymentReminder+)>
+<!ELEMENT PaymentReminder (#PCDATA)>
+<!ELEMENT PaymentNotifications (PaymentNotification+)>
+<!ELEMENT PaymentNotification (#PCDATA)>
+<!ELEMENT PaymentConfirmations (PaymentConfirmation+)>
+<!ELEMENT PaymentConfirmation (#PCDATA)>
+<!ELEMENT PaymentReceipts (PaymentReceipt+)>
+<!ELEMENT PaymentReceipt (#PCDATA)>
+<!ELEMENT PaymentDisputes (PaymentDispute+)>
+<!ELEMENT PaymentDispute (#PCDATA)>
