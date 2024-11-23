@@ -1,2 +1,15 @@
 Django==3.2.9
 requests==2.26.0
+Flask==2.0.2
+Flask-SQLAlchemy==2.5.1
+Flask-WTF==1.0.0
+Flask-Login==0.5.0
+Flask-Admin==1.5.8
+Flask-Mail==0.9.1
+Flask-RESTful==0.3.9
+requests==2.27.1
+WTForms==3.0.0
+SQLAlchemy==1.4.29
+alembic==1.7.6
+psycopg2-binary==2.9.3
+python-dotenv==0.19.2

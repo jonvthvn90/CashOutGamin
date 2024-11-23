@@ -2,7 +2,32 @@ from flask import Flask, render_template, request, redirect, url_for
 from app.models import User, Game
 from app.payment import cashAppPayController
 from app.streaming import streaming
+from django.apps import AppConfig
 
+class CashOutGamingAppConfig(AppConfig):
+    name = 'cash_out_gaming'
+    verbose_name = 'Cash Out Gaming'
+
+    def ready(self):
+        # Import the models and views
+        from . import models
+        from . import views
+
+        # Register the models and views
+        from django.contrib import admin
+        admin.autodiscover()
+
+        # Define the app's functionality
+        def get_app_functionality():
+            # Return the app's functionality
+            return {
+                'models': models,
+                'views': views,
+            }
+
+        # Return the app's functionality
+        return get_app_functionality()
+    
 app = Flask(__name__)
 
 @app.route("/")

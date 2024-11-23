@@ -1,7 +1,11 @@
 from django.contrib import admin
 from .models import User, Profile
 from .models import Post, Comment
+from django.contrib import admin
+from .models import *
 
+admin.site.register(PaymentGatewayAPIIntegrationMultiplePaymentMethodsCurrenciesLanguagesPaymentPlansSubscriptionPlansRecurringPaymentsPaymentSchedulesPaymentRemindersPaymentNotificationsPaymentConfirmationsPaymentReceiptsPaymentDisputes)
+admin.site.register(PaymentProcessorAPIIntegrationMultiplePaymentMethodsCurrenciesLanguagesPaymentPlansSubscriptionPlansRecurringPaymentsPaymentSchedulesPaymentRemindersPaymentNotificationsPaymentConfirmationsPaymentReceiptsPaymentDisputes)
 admin.site.register(User)
 admin.site.register(Profile)
 admin.site.register(Post)

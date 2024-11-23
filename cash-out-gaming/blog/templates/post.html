@@ -1,7 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+</head>
+<head>
+    <script src="{% static 'js/blog.js' %}"></script>
+</head>
     <h1>{{ post.title }}</h1>
     <p>{{ post.content }}</p>
-    <p>Created by {{ post.user.username }} on {{ post.created_at }}</p>
+    <p>Posted by {{ post.author.username }} on {{ post.created_at }}</p>
+    <h2>Comments</h2>
+    <ul>
+        {% for comment in comments %}
+            <li>
+                <p>{{ comment.content }}</p>
+                <p>Posted by {{ comment.author.username }} on {{ comment.created_at }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+    <button><a href="{% url 'create_comment' post.pk %}">Create Comment</a></button>
 {% endblock %}

@@ -1,0 +1,1 @@
+web: gunicorn cash_out_gaming.wsgi:application

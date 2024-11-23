@@ -1,0 +1,78 @@
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from .models import PaymentProcessorAPIIntegrationMultiplePaymentMethodsCurrenciesLanguagesPaymentPlansSubscriptionPlansRecurringPaymentsPaymentSchedulesPaymentRemindersPaymentNotificationsPaymentConfirmationsPaymentReceiptsPaymentDisputes
+from .forms import PaymentProcessorAPIIntegrationMultiplePaymentMethodsCurrenciesLanguagesPaymentPlansSubscriptionPlansRecurringPaymentsPaymentSchedulesPaymentRemindersPaymentNotificationsPaymentConfirmationsPaymentReceiptsPaymentDisputesForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
+from django.utils.decorators import method_decorator
+from django.views.generic import View, TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+
+class PaymentProcessorAPIIntegrationMultiplePaymentMethodsCurrenciesLanguagesPaymentPlansSubscriptionPlansRecurringPaymentsPaymentSchedulesPaymentRemindersPaymentNotificationsPaymentConfirmationsPaymentReceiptsPaymentDisputesView(View):
+    def get(self, request):
+        return render(request, 'payment_processor_api_integration_multiple_payment_methods_currencies_languages_payment_plans_subscription_plans_recurring_payments_payment_schedules_payment_reminders_payment_notifications_payment_confirmations_payment_receipts_payment_disputes.html')
+
+    def post(self, request):
+        form = PaymentProcessorAPIIntegrationMultiplePaymentMethodsCurrenciesLanguagesPaymentPlansSubscriptionPlansRecurringPaymentsPaymentSchedulesPaymentRemindersPaymentNotificationsPaymentConfirmationsPaymentReceiptsPaymentDisputesForm(request.POST)
+        if form.is_valid():
+            payment_method = form.cleaned_data['payment_method']
+            currency = form.cleaned_data['currency']
+            language = form.cleaned_data['language']
+            payment_plan = form.cleaned_data['payment_plan']
+            subscription_plan = form.cleaned_data['subscription_plan']
+            recurring_payment = form.cleaned_data['recurring_payment']
+            payment_schedule = form.cleaned_data['payment_schedule']
+            payment_reminder = form.cleaned_data['payment_reminder']
+            payment_notification = form.cleaned_data['payment_notification']
+            payment_confirmation = form.cleaned_data['payment_confirmation']
+            payment_receipt = form.cleaned_data['payment_receipt']
+            payment_dispute = form.cleaned_data['payment_dispute']
+
+            # Create a new payment processor API integration
+            payment_processor_api_integration = PaymentProcessorAPIIntegrationMultiplePaymentMethodsCurrenciesLanguagesPaymentPlansSubscriptionPlansRecurringPaymentsPaymentSchedulesPaymentRemindersPaymentNotificationsPaymentConfirmationsPaymentReceiptsPaymentDisputes(
+                payment_method=payment_method,
+                currency=currency,
+                language=language,
+                payment_plan=payment_plan,
+                subscription_plan=subscription_plan,
+                recurring_payment=recurring_payment,
+                payment_schedule=payment_schedule,
+                payment_reminder=payment_reminder,
+                payment_notification=payment_notification,
+                payment_confirmation=payment_confirmation,
+                payment_receipt=payment_receipt,
+                payment_dispute=payment_dispute,
+            )
+            payment_processor_api_integration.save()
+
+            return redirect('payment_processor_api_integration_multiple_payment_methods_currencies_languages_payment_plans_subscription_plans_recurring_payments_payment_schedules_payment_reminders_payment_notifications_payment_confirmations_payment_receipts_payment_disputes_success')
+        else:
+            return render(request, 'payment_processor_api_integration_multiple_payment_methods_currencies_languages_payment_plans_subscription_plans_recurring_payments_payment_schedules_payment_reminders_payment_notifications_payment_confirmations_payment_receipts_payment_disputes.html', {'form': form})
+
+class PaymentProcessorAPIIntegrationMultiplePaymentMethodsCurrenciesLanguagesPaymentPlansSubscriptionPlansRecurringPaymentsPaymentSchedulesPaymentRemindersPaymentNotificationsPaymentConfirmationsPaymentReceiptsPaymentDisputesSuccessView(TemplateView):
+    template_name = 'payment_processor_api_integration_multiple_payment_methods_currencies_languages_payment_plans_subscription_plans_recurring_payments_payment_schedules_payment_reminders_payment_notifications_payment_confirmations_payment_receipts_payment_disputes_success.html'
+
+class PaymentProcessorAPIIntegrationMultiplePaymentMethodsCurrenciesLanguagesPaymentPlansSubscriptionPlansRecurringPaymentsPaymentSchedulesPaymentRemindersPaymentNotificationsPaymentConfirmationsPaymentReceiptsPaymentDisputesListView(ListView):
+    model = PaymentProcessorAPIIntegrationMultiplePaymentMethodsCurrenciesLanguagesPaymentPlansSubscriptionPlansRecurringPaymentsPaymentSchedulesPaymentRemindersPaymentNotificationsPaymentConfirmationsPaymentReceiptsPaymentDisputes
+    template_name = 'payment_processor_api_integration_multiple_payment_methods_currencies_languages_payment_plans_subscription_plans_recurring_payments_payment_schedules_payment_reminders_payment_notifications_payment_confirmations_payment_receipts_payment_disputes_list.html'
+
+class PaymentProcessorAPIIntegrationMultiplePaymentMethodsCurrenciesLanguagesPaymentPlansSubscriptionPlansRecurringPaymentsPaymentSchedulesPaymentRemindersPaymentNotificationsPaymentConfirmationsPaymentReceiptsPaymentDisputesDetailView(DetailView):
+    model = PaymentProcessorAPIIntegrationMultiplePaymentMethodsCurrenciesLanguagesPaymentPlansSubscriptionPlansRecurringPaymentsPaymentSchedulesPaymentRemindersPaymentNotificationsPaymentConfirmationsPaymentReceiptsPaymentDisputes
+    template_name = 'payment_processor_api_integration_multiple_payment_methods_currencies_languages_payment_plans_subscription_plans_recurring_payments_payment_schedules_payment_reminders_payment_notifications_payment_confirmations_payment_receipts_payment_disputes_detail.html'
+
+class PaymentProcessorAPIIntegrationMultiplePaymentMethodsCurrenciesLanguagesPaymentPlansSubscriptionPlansRecurringPaymentsPaymentSchedulesPaymentRemindersPaymentNotificationsPaymentConfirmationsPaymentReceiptsPaymentDisputesCreateView(CreateView):
+    model = PaymentProcessorAPIIntegrationMultiplePaymentMethodsCurrenciesLanguagesPaymentPlansSubscriptionPlansRecurringPaymentsPaymentSchedulesPaymentRemindersPaymentNotificationsPaymentConfirmationsPaymentReceiptsPaymentDisputes
+    form_class = PaymentProcessorAPIIntegrationMultiplePaymentMethodsCurrenciesLanguagesPaymentPlansSubscriptionPlansRecurringPaymentsPaymentSchedulesPaymentRemindersPaymentNotificationsPaymentConfirmationsPaymentReceiptsPaymentDisputesForm
+    template_name = 'payment_processor_api_integration_multiple_payment_methods_currencies_languages_payment_plans_subscription_plans_recurring_payments_payment_schedules_payment_reminders_payment_notifications_payment_confirmations_payment_receipts_payment_disputes_form.html'
+    success_url = reverse_lazy('payment_processor_api_integration_multiple_payment_methods_currencies_languages_payment_plans_subscription_plans_recurring_payments_payment_schedules_payment_reminders_payment_notifications_payment_confirmations_payment_receipts_payment_disputes_list')
+
+class PaymentProcessorAPIIntegrationMultiplePaymentMethodsCurrenciesLanguagesPaymentPlansSubscriptionPlansRecurringPaymentsPaymentSchedulesPaymentRemindersPaymentNotificationsPaymentConfirmationsPaymentReceiptsPaymentDisputesUpdateView(UpdateView):
+    model = PaymentProcessorAPIIntegrationMultiplePaymentMethodsCurrenciesLanguagesPaymentPlansSubscriptionPlansRecurringPaymentsPaymentSchedulesPaymentRemindersPaymentNotificationsPaymentConfirmationsPaymentReceiptsPaymentDisputes
+    form_class = PaymentProcessorAPIIntegrationMultiplePaymentMethodsCurrenciesLanguagesPaymentPlansSubscriptionPlansRecurringPaymentsPaymentSchedulesPaymentRemindersPaymentNotificationsPaymentConfirmationsPaymentReceiptsPaymentDisputesForm
+    template_name = 'payment_processor_api_integration_multiple_payment_methods_currencies_languages_payment_plans_subscription_plans_recurring_payments_payment_schedules_payment_reminders_payment_notifications_payment_confirmations_payment_receipts_payment_disputes_form.html'
+    success_url = reverse_lazy('payment_processor_api_integration_multiple_payment_methods_currencies_languages_payment_plans_subscription_plans_recurring_payments_payment_schedules_payment_reminders_payment_notifications_payment_confirmations_payment_receipts_payment_disputes_list')
+
+class PaymentProcessorAPIIntegrationMultiplePaymentMethodsCurrenciesLanguagesPaymentPlansSubscriptionPlansRecurringPaymentsPaymentSchedulesPaymentRemindersPaymentNotificationsPaymentConfirmationsPaymentReceiptsPaymentDisputesDeleteView(DeleteView):
+    model = PaymentProcessorAPIIntegrationMultiplePaymentMethodsCurrenciesLanguagesPaymentPlansSubscriptionPlansRecurringPaymentsPaymentSchedulesPaymentRemindersPaymentNotificationsPaymentConfirmationsPaymentReceiptsPaymentDisputes
+    template_name = 'payment_processor_api_integration_multiple_payment_methods_currencies_languages_payment_plans_subscription_plans_recurring_payments_payment_schedules_payment_reminders_payment_notifications_payment_confirmations_payment_receipts_payment_disputes_confirm_delete.html'
+    success_url = reverse_lazy('payment_processor_api_integration_multiple_payment_methods_currencies_languages_payment_plans_subscription_plans_recurring_payments_payment_schedules_payment_reminders_payment_notifications_payment_confirmations_payment_receipts_payment_disputes_list')

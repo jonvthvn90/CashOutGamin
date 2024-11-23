@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Forum, Thread, Post
-from .forms import ThreadForm, PostForm
+from .models import Forum, Thread, Post, Comment
+from .forms import ThreadForm, PostForm, CommentForm
 
 def forum_view(request):
     forums = Forum.objects.all()
@@ -38,3 +38,18 @@ def create_post(request, thread_id):
     else:
         form = PostForm()
     return render(request, 'create_post.html', {'form': form})
+
+@login_required
+def create_comment(request, pk):
+    post = Post.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.author = request.user
+            comment.save()
+            return redirect('post_detail', pk=pk)
+    else:
+        form = CommentForm()
+    return render(request, 'forum/create_comment.html', {'form': form, 'post': post})

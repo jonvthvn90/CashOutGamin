@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Users</h1>
-    <ul>
-        {% for user in users %}
-            <li>{{ user.user.username }} - {{ user.bio }} - {{ user.location }}</li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'create_user' %}">Create User</a>
+    <h1>{{ user.username }}</h1>
+    <p>Email: {{ user.email }}</p>
+    <p>Balance: {{ user.balance }}</p>
+    <p>Profile Picture:</p>
+    <img src="{{ user.profile_picture.url }}" alt="Profile Picture">
+    <button><a href="{% url 'update_user' user.pk %}">Update User</a></button>
+    <button><a href="{% url 'delete_user' user.pk %}">Delete User</a></button>
 {% endblock %}

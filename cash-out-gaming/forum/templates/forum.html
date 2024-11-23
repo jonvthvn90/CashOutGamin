@@ -1,12 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Forums</h1>
+<head>
+  <script src="{% static 'js/forum.js' %}"></script>
+</head>
+<head>
+  <link rel="stylesheet" href="{% static 'css/forum.css' %}">
+</head>
+  <h1>Forum</h1>
   <ul>
-    {% for forum in forums %}
+    {% for post in posts %}
+    <li>
+        <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
+        ({{ post.author.username }})
+    </li>
+    {% endfor %}
       <li>
         <a href="{% url 'thread_view' forum.id %}">{{ forum.name }}</a>
       </li>
     {% endfor %}
   </ul>
+  <button><a href="{% url 'create_post' %}">Create Post</a></button>
 {% endblock %}

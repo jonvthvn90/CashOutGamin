@@ -5,7 +5,7 @@ def predict_match(team1, team2, model):
     matchmaking = Matchmaking(None)
 
     # Use the trained model to predict the outcome of a match between two teams
-    prediction = matchmaking.predict_match(team1, team2)
+    prediction = matchmaking.predict_match(player1= team1,player2= team2)
 
     # Return the predicted outcome
     return prediction

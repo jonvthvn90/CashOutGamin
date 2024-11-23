@@ -1,46 +1,56 @@
 import requests
+import json
 
 class TwitchAPI:
-    def __init__(self, client_id, client_secret):
-        self.client_id = client_id
-        self.client_secret = client_secret
+    def __init__(self):
+        self.client_id = 'YOUR_TWITCH_CLIENT_ID'
+        self.client_secret = 'YOUR_TWITCH_CLIENT_SECRET'
         self.base_url = 'https://api.twitch.tv/helix'
 
     def get_access_token(self):
-        response = requests.post(
-            f'{self.base_url}/oauth2/token',
-            headers={'Content-Type': 'application/x-www-form-urlencoded'},
-            data={
-                'client_id': self.client_id,
-                'client_secret': self.client_secret,
-                'grant_type': 'client_credentials'
-            }
-        )
-        return response.json()['access_token']
+        response = requests.post(f'{self.base_url}/oauth2/token', headers={
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }, data={
+            'client_id': self.client_id,
+            'client_secret': self.client_secret,
+            'grant_type': 'client_credentials'
+        })
 
-    def get_user(self, username):
-        access_token = self.get_access_token()
-        response = requests.get(
-            f'{self.base_url}/users',
-            headers={'Authorization': f'Bearer {access_token}'},
-            params={'login': username}
-        )
-        return response.json()['data'][0]
+        if response.status_code == 200:
+            return response.json()['access_token']
+        else:
+            return None
 
-    def get_stream(self, username):
+    def get_user_info(self, username):
         access_token = self.get_access_token()
-        response = requests.get(
-            f'{self.base_url}/streams',
-            headers={'Authorization': f'Bearer {access_token}'},
-            params={'user_login': username}
-        )
-        return response.json()['data'][0]
+        if access_token:
+            response = requests.get(f'{self.base_url}/users', headers={
+                'Authorization': f'Bearer {access_token}',
+                'Client-ID': self.client_id
+            }, params={
+                'login': username
+            })
 
-    def get_game(self, game_id):
+            if response.status_code == 200:
+                return response.json()['data'][0]
+            else:
+                return None
+        else:
+            return None
+
+    def get_stream_info(self, username):
         access_token = self.get_access_token()
-        response = requests.get(
-            f'{self.base_url}/games',
-            headers={'Authorization': f'Bearer {access_token}'},
-            params={'id': game_id}
-        )
-        return response.json()['data'][0]
+        if access_token:
+            response = requests.get(f'{self.base_url}/streams', headers={
+                'Authorization': f'Bearer {access_token}',
+                'Client-ID': self.client_id
+            }, params={
+                'user_login': username
+            })
+
+            if response.status_code == 200:
+                return response.json()['data'][0]
+            else:
+                return None
+        else:
+            return None

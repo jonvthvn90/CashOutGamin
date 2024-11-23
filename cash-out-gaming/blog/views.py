@@ -1,39 +1,43 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
 from .models import BlogPost
 from .forms import BlogPostForm
+from django.contrib.auth.decorators import login_required
+from .models import Post, Comment
+from .forms import PostForm, CommentForm
 
-def blog_view(request):
-    posts = BlogPost.objects.all()
-    return render(request, 'blog.html', {'posts': posts})
+def blog(request):
+    posts = Post.objects.all()
+    return render(request, 'blog/blog.html', {'posts': posts})
+
+def post_detail(request, pk):
+    post = Post.objects.get(pk=pk)
+    comments = post.comment_set.all()
+    return render(request, 'blog/post.html', {'post': post, 'comments': comments})
 
 @login_required
 def create_post(request):
     if request.method == 'POST':
-        form = BlogPostForm(request.POST)
+        form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            post.user = request.user
+            post.author = request.user
             post.save()
-            return redirect('blog_view')
+            return redirect('blog')
     else:
-        form = BlogPostForm()
-    return render(request, 'create_post.html', {'form': form})
+        form = PostForm()
+    return render(request, 'blog/create_post.html', {'form': form})
 
 @login_required
-def edit_post(request, post_id):
-    post = BlogPost.objects.get(id=post_id)
+def create_comment(request, pk):
+    post = Post.objects.get(pk=pk)
     if request.method == 'POST':
-        form = BlogPostForm(request.POST, instance=post)
+        form = CommentForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('blog_view')
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.author = request.user
+            comment.save()
+            return redirect('post_detail', pk=pk)
     else:
-        form = BlogPostForm(instance=post)
-    return render(request, 'edit_post.html', {'form': form})
-
-@login_required
-def delete_post(request, post_id):
-    post = BlogPost.objects.get(id=post_id)
-    post.delete()
-    return redirect('blog_view')
+        form = CommentForm()
+    return render(request, 'blog/create_comment.html', {'form': form, 'post': post})

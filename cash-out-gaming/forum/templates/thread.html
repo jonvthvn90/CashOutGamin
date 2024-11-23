@@ -1,13 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<head>
+    <script src="{% static 'js/forum.js' %}"></script>
+</head>
+<head>
+    <link rel="stylesheet" href="{% static 'css/forum.css' %}">
+</head>
     <h1>{{ thread.title }}</h1>
     <ul>
         {% for post in thread.posts.all %}
             <li>
                 <a href="{% url 'post' post.id %}">{{ post.title }}</a>
             </li>
+            <h1>{{ post.title }}</h1>
+            <p>{{ post.content }}</p>
+            <p>Posted by {{ post.author.username }} on {{ post.created_at }}</p>
+            <h2>Comments</h2>
+            <ul>
+                {% for comment in post.comment_set.all %}
+                    <li>
+                        <p>{{ comment.content }}</p>
+                        <p>Posted by {{ comment.author.username }} on {{ comment.created_at }}</p>
+                    </li>
         {% endfor %}
     </ul>
     <a href="{% url 'create_post' %}">Create Post</a>
+    <button><a href="{% url 'create_comment' post.pk %}">Create Comment</a></button>
+    
+    
 {% endblock %}

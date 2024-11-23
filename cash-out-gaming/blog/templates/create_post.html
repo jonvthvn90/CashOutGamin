@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+</head>
+<head>
+    <script src="{% static 'js/blog.js' %}"></script>
+</head>
     <h1>Create Post</h1>
     <form method="post">
         {% csrf_token %}

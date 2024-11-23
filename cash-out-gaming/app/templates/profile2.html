@@ -4,11 +4,18 @@
     <h1>Profile</h1>
     <p>Username: {{ user.username }}</p>
     <p>Email: {{ user.email }}</p>
-    <p>Profile Picture: <img src="{{ user.profile.profile_picture.url }}" alt="Profile Picture"></p>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <label for="profile_picture">Update Profile Picture:</label>
-        <input type="file" id="profile_picture" name="profile_picture"><br><br>
-        <input type="submit" value="Update">
-    </form>
+    <p>Balance: {{ user.balance }}</p>
+    <h2>Recent Matches</h2>
+    <ul>
+        {% for match in user.matches %}
+            <li>{{ match.tournament.name }} - {{ match.opponent.username }} ({{ match.result }})</li>
+        {% endfor %}
+    </ul>
+    <h2>Recent Bets</h2>
+    <ul>
+        {% for bet in user.bets %}
+            <li>{{ bet.match.tournament.name }} - {{ bet.match.opponent.username }} ({{ bet.amount }})</li>
+        {% endfor %}
+    </ul>
+    <button><a href="{% url 'edit_profile' %}">Edit Profile</a></button>
 {% endblock %}

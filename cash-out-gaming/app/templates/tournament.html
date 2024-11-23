@@ -1,20 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Tournaments</h1>
+    <h1>{{ tournament.name }}</h1>
+    <p>{{ tournament.description }}</p>
+    <h2>Matches</h2>
     <ul>
-        {% for tournament in tournaments %}
-            <li>{{ tournament.name }} ({{ tournament.start_date }} - {{ tournament.end_date }})</li>
+        {% for match in tournament.matches %}
+            <li>{{ match.opponent.username }} ({{ match.result }})</li>
         {% endfor %}
     </ul>
-    <form method="post">
-        {% csrf_token %}
-        <label for="tournament_name">Create Tournament:</label>
-        <input type="text" id="tournament_name" name="tournament_name"><br><br>
-        <label for="start_date">Start Date:</label>
-        <input type="date" id="start_date" name="start_date"><br><br>
-        <label for="end_date">End Date:</label>
-        <input type="date" id="end_date" name="end_date"><br><br>
-        <input type="submit" value="Create">
-    </form>
+    <h2>Leaderboard</h2>
+    <ul>
+        {% for user in tournament.leaderboard %}
+            <li>{{ user.username }} ({{ user.balance }})</li>
+        {% endfor %}
+    </ul>
+    <button><a href="{% url 'join_tournament' tournament.id %}">Join Tournament</a></button>
 {% endblock %}

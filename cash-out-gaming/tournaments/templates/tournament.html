@@ -1,10 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Tournaments</h1>
+    <h1>{{ tournament.name }}</h1>
+    <p>{{ tournament.description }}</p>
+    <h2>Matches</h2>
     <ul>
-        {% for tournament in tournaments %}
-            <li>{{ tournament.name }} - {{ tournament.description }}</li>
+        {% for match in matches %}
+            <li>
+                {{ match.player1.username }} vs {{ match.player2.username }}
+                {% if match.winner %}
+                    (Winner: {{ match.winner.username }})
+                {% endif %}
+            </li>
         {% endfor %}
     </ul>
+    <button><a href="{% url 'create_match' tournament.pk %}">Create Match</a></button>
 {% endblock %}

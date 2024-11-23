@@ -5,11 +5,19 @@
     <div class="match-container">
         <h2>{{ match.name }}</h2>
         <p>{{ match.description }}</p>
+        <p>{{ match.result }}</p>
         <ul>
             {% for player in players %}
                 <li>{{ player.username }}</li>
             {% endfor %}
         </ul>
+        <h2>Bets</h2>
+        <ul>
+            {% for bet in match.bets %}
+                <li>{{ bet.user.username }} ({{ bet.amount }})</li>
+            {% endfor %}
+        </ul>
+        <button><a href="{% url 'place_bet' match.id %}">Place Bet</a></button>
         <form method="post">
             {% csrf_token %}
             <input type="submit" value="Join Match">

@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My App</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Cash Out Gaming</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="{% url 'login' %}">Login</a></li>
-                <li><a href="{% url 'register' %}">Register</a></li>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
+                <li><a href="{{ url_for('profile') }}">Profile</a></li>
+                <li><a href="{{ url_for('tournament') }}">Tournaments</a></li>
+                <li><a href="{{ url_for('games') }}">Games</a></li>
+                <li><a href="{{ url_for('streaming') }}">Streaming</a></li>
+                <li><a href="{{ url_for('forum') }}">Forum</a></li>
+                <li><a href="{{ url_for('blog') }}">Blog</a></li>
             </ul>
         </nav>
     </header>
@@ -18,7 +24,8 @@
         {% block content %}{% endblock %}
     </main>
     <footer>
-        &copy; 2023 My App
+        <p>&copy; 2023 Cash Out Gaming</p>
     </footer>
+    <script src="{% static 'js/base.js' %}"></script>
 </body>
 </html>

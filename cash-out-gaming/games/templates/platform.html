@@ -2,11 +2,12 @@
 
 {% block content %}
     <h1>{{ platform.name }}</h1>
+    <p>{{ platform.description }}</p>
+    <p>Games:</p>
     <ul>
         {% for game in platform.games.all %}
-            <li>
-                <a href="{% url 'game' game.id %}">{{ game.title }}</a>
-            </li>
+            <li>{{ game.name }}</li>
         {% endfor %}
     </ul>
+    <button><a href="{% url 'create_platform' %}">Create Platform</a></button>
 {% endblock %}

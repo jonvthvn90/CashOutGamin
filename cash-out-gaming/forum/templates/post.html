@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
-
+<head>
+    <script src="{% static 'js/forum.js' %}"></script>
+</head>
+<head>
+    <link rel="stylesheet" href="{% static 'css/forum.css' %}">
+</head>
 {% block content %}
     <h1>{{ post.title }}</h1>
     <p>{{ post.content }}</p>
     <p>Created by {{ post.user.username }} on {{ post.created_at }}</p>
+    <p>Posted by {{ post.author.username }} on {{ post.created_at }}</p>
+    <button><a href="{% url 'post_detail' post.pk %}">View Post</a></button>
 {% endblock %}

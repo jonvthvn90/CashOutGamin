@@ -3,7 +3,141 @@ from app import db
 from flask_login import UserMixin
 from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.utils import timezone
+from django.db import models
+from django.contrib.auth.models import AbstractUser
 
+class User(AbstractUser):
+    email = models.EmailField(unique=True)
+    balance = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+
+class Game(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class Tournament(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class Match(models.Model):
+    tournament = models.ForeignKey(Tournament, on_delete=models.CASCADE)
+    player1 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='player1')
+    player2 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='player2')
+    winner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='winner', null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class Bet(models.Model):
+    match = models.ForeignKey(Match, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+class User(AbstractUser):
+    email = models.EmailField(unique=True)
+    phone_number = models.CharField(max_length=20, blank=True, null=True)
+    address = models.CharField(max_length=255, blank=True, null=True)
+    city = models.CharField(max_length=100, blank=True, null=True)
+    state = models.CharField(max_length=100, blank=True, null=True)
+    zip_code = models.CharField(max_length=20, blank=True, null=True)
+    country = models.CharField(max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return self.username
+
+class Game(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    image = models.ImageField(upload_to='games/images/')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+class GameCategory(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+class GameSubCategory(models.Model):
+    category = models.ForeignKey(GameCategory, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+class GameTag(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+class GameReview(models.Model):
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    rating = models.IntegerField()
+    review = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'{self.game.title} - {self.user.username}'
+
+class PaymentMethod(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+class PaymentTransaction(models.Model):
+    payment_method = models.ForeignKey(PaymentMethod, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    transaction_id = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'{self.payment_method.name} - {self.user.username}'
+
+class CashOutRequest(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    payment_method = models.ForeignKey(PaymentMethod, on_delete=models.CASCADE)
+    status = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'{self.user.username} - {self.amount}'
+
+class CashOutTransaction(models.Model):
+    cash_out_request = models.ForeignKey(CashOutRequest, on_delete=models.CASCADE)
+    transaction_id = models.CharField(max_length=100)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'{self.cash_out_request.user.username} - {self.amount}'
 class User(models.Model):
     username = models.CharField(max_length=255)
     email = models.EmailField(unique=True)
@@ -66,7 +200,7 @@ class Leaderboard(db.Model):
         return f"Leaderboard('{self.tournament_id}', '{self.user_id}', '{self.score}')"
     
     class Thread(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+        id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=False)
     posts = db.relationship('Post', backref='thread', lazy=True)
