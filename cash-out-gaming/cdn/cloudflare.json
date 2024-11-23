@@ -1,6 +1,7 @@
 {
-    "name": "cash-out-gaming",
-    "type": "CNAME",
-    "content": "cdn.cashoutgaming.com",
-    "proxied": true
-  }
+  "cloudflare_email": "your_email@example.com",
+  "cloudflare_api_key": "your_api_key",
+  "cloudflare_zone_id": "your_zone_id",
+  "cloudflare_domain": "example.com",
+  "cloudflare_subdomain": "cdn"
+}

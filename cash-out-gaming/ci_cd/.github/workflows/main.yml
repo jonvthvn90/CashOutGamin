@@ -11,15 +11,17 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install -r requirements.txt
+
       - name: Run tests
-        run: python manage.py test
-      - name: Deploy to production
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          source: "."
-          target: "/var/www/cash-out-gaming"
+        run: |
+          python -m unittest discover -s testing -p 'test_*.py'
+
+      - name: Build and deploy
+        run: |
+          docker build -t your-image-name .
+          docker push your-image-name
+          kubectl apply -f deployment.yaml

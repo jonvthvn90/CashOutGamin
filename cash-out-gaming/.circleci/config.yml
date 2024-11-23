@@ -1,0 +1,24 @@
+version: 2.1
+
+jobs:
+  build-and-deploy:
+    docker:
+      - image: circleci/python:3.9
+
+    steps:
+      - checkout
+
+      - run: pip install -r requirements.txt
+
+      - run: python manage.py migrate
+
+      - run: python manage.py collectstatic
+
+      - run: python manage.py runserver 0.0.0.0:8000
+
+      - deploy:
+          name: Deploy to AWS
+          command: |
+            aws s3 sync static/ s3://your-bucket-name/static/
+            aws s3 sync media/ s3://your-bucket-name/media/
+            eb deploy your-environment-name

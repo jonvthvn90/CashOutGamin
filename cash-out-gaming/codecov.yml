@@ -1,0 +1,24 @@
+comment: off
+coverage:
+  precision: 2
+  round: down
+  status:
+    project:
+      default:
+        target: 90%
+        threshold: 85%
+    patch:
+      default:
+        target: 90%
+        threshold: 85%
+    changes:
+      default:
+        target: 90%
+        threshold: 85%
+flags:
+  unittests:
+    paths:
+      - tests/
+  integrationtests:
+    paths:
+      - tests/integration/

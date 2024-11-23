@@ -1,3 +1,40 @@
+# Cash Out Gaming
+
+Cash Out Gaming is a web application that allows users to compete in tournaments and win cash prizes.
+
+## Features
+
+* User registration and login
+* Tournament creation and management
+* Match creation and management
+* Betting system
+* User profile management
+* Admin dashboard
+
+## Requirements
+
+* Python 3.9+
+* Django 3.2+
+* PostgreSQL 13+
+* Redis 6+
+
+## Installation
+
+1. Clone the repository: `git clone https://github.com/your-username/cash-out-gaming.git`
+2. Install the dependencies: `pip install -r requirements.txt`
+3. Create a new PostgreSQL database: `createdb cash_out_gaming`
+4. Create a new Redis instance: `redis-server`
+5. Run the migrations: `python manage.py migrate`
+6. Run the application: `python manage.py runserver`
+
+## Deployment
+
+1. Create a new Heroku app: `heroku create`
+2. Set the environment variables: `heroku config:set DJANGO_SETTINGS_MODULE=cash_out_gaming.settings`
+3. Deploy the application: `git push heroku master`
+4. Run the migrations: `heroku run python manage.py migrate`
+5. Run the application: `heroku open`
+
 # Game API
 
 This is a RESTful API for managing games.

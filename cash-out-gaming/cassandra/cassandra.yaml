@@ -1,0 +1,11 @@
+cluster_name: 'Cash Out Gaming'
+num_tokens: 256
+seed_provider:
+  - class_name: org.apache.cassandra.locator.SimpleSeedProvider
+    parameters:
+      - seeds: "127.0.0.1"
+listen_address: localhost
+start_rpc: true
+rpc_address: localhost
+rpc_port: 9160
+endpoint_snitch: SimpleSnitch
