@@ -1,25 +1,93 @@
-.forum {
-    background-color: #f8f8f8;
-    border: 1px solid #e7e7e7;
-    padding: 20px;
-}
-
-.forum-thread {
+body {
     background-color: #f2f2f2;
-    border: 1px solid #e7e7e7;
-    padding: 20px;
 }
 
-.forum-thread h2 {
-    margin-top: 0;
+h1 {
+    color: #00698f;
+}
+
+a {
+    color: #00698f;
+}
+
+a:hover {
+    color: #003d5b;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #444;
+}
+
+.forum-container {
+    width: 80%;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.forum-header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.forum-header h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
 }
 
 .forum-post {
-    background-color: #f8f8f8;
-    border: 1px solid #e7e7e7;
     padding: 20px;
+    border-bottom: 1px solid #ccc;
 }
 
-.forum-post h3 {
-    margin-top: 0;
+.forum-post h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+}
+
+.forum-post p {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+.forum-post button {
+    margin: 10px 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.forum-post button:hover {
+    background-color: #444;
 }

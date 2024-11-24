@@ -1,27 +1,35 @@
-// Add event listener to forum threads
-document.querySelectorAll('.forum-thread').forEach(function(thread) {
-    thread.addEventListener('click', function(event) {
-        event.preventDefault();
-        var threadId = thread.getAttribute('data-thread-id');
-        // Load thread content
-        fetch('/forum/thread/' + threadId + '/')
-            .then(response => response.text())
-            .then(html => {
-                document.querySelector('.forum-thread-content').innerHTML = html;
+// Get the elements
+const forumContainer = document.getElementById('forum-container');
+const forumHeader = document.getElementById('forum-header');
+const forumPosts = document.getElementById('forum-posts');
+
+// Add event listeners
+forumContainer.addEventListener('click', (e) => {
+    if (e.target.classList.contains('forum-post-button')) {
+        const postId = e.target.dataset.postId;
+        fetch(`/forum/posts/${postId}`)
+            .then((response) => response.json())
+            .then((data) => {
+                const postHtml = `
+                    <h2>${data.title}</h2>
+                    <p>${data.content}</p>
+                `;
+                forumPosts.innerHTML = postHtml;
             });
-    });
+    }
 });
 
-// Add event listener to forum posts
-document.querySelectorAll('.forum-post').forEach(function(post) {
-    post.addEventListener('click', function(event) {
-        event.preventDefault();
-        var postId = post.getAttribute('data-post-id');
-        // Load post content
-        fetch('/forum/post/' + postId + '/')
-            .then(response => response.text())
-            .then(html => {
-                document.querySelector('.forum-post-content').innerHTML = html;
+forumHeader.addEventListener('click', (e) => {
+    if (e.target.classList.contains('forum-header-button')) {
+        const categoryId = e.target.dataset.categoryId;
+        fetch(`/forum/categories/${categoryId}`)
+            .then((response) => response.json())
+            .then((data) => {
+                const categoryHtml = `
+                    <h1>${data.name}</h1>
+                    <p>${data.description}</p>
+                `;
+                forumHeader.innerHTML = categoryHtml;
             });
-    });
+    }
 });
