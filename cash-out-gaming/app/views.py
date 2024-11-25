@@ -22,7 +22,92 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import User, Game, Tournament, Match, Bet
 from .forms import UserForm, GameForm, TournamentForm, MatchForm, BetForm
+from flask import render_template, request, redirect, url_for
+from .models import db, User, Tournament, Match, Payment
+from . import app
 
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+        user = User.query.filter_by(username=username).first()
+        if user and user.check_password(password):
+            login_user(user)
+            return redirect(url_for("index"))
+    return render_template("login.html")
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        username = request.form["username"]
+        email = request.form["email"]
+        password = request.form["password"]
+        user = User(username=username, email=email)
+        user.set_password(password)
+        db.session.add(user)
+        db.session.commit()
+        return redirect(url_for("login"))
+    return render_template("register.html")
+
+@app.route("/tournament")
+@login_required
+def tournament():
+    tournaments = Tournament.query.all()
+    return render_template("tournament.html", tournaments=tournaments)
+
+@app.route("/match")
+@login_required
+def match():
+    matches = Match.query.all()
+    return render_template("match.html", matches=matches)
+
+@app.route("/payment")
+@login_required
+def payment():
+    payments = Payment.query.all()
+    return render_template("payment.html", payments=payments)
+
+@app.route("/create_tournament", methods=["GET", "POST"])
+@login_required
+def create_tournament():
+    if request.method == "POST":
+        name = request.form["name"]
+        description = request.form["description"]
+        start_date = request.form["start_date"]
+        end_date = request.form["end_date"]
+        tournament = Tournament(name=name, description=description, start_date=start_date, end_date=end_date)
+        db.session.add(tournament)
+        db.session.commit()
+        return redirect(url_for("tournament"))
+    return render_template("create_tournament.html")
+
+@app.route("/create_match", methods=["GET", "POST"])
+@login_required
+def create_match():
+    if request.method == "POST":
+        tournament_id = request.form["tournament_id"]
+        player1_id = request.form["player1_id"]
+        player2_id = request.form["player2_id"]
+        start_date = request.form["start_date"]
+        end_date = request.form["end_date"]
+        match = Match(tournament_id=tournament_id, player1_id=player1_id, player2_id=player2_id, start_date=start_date, end_date=end_date)
+        db.session.add(match)
+        db.session.commit()
+        return redirect(url_for("match"))
+    return render_template("create_match.html")
+
+@app.route("/make_payment", methods=["GET", "POST"])
+@login_required
+def make_payment():
+    if request.method == "POST":
+        amount = request.form["amount"]
+        payment_method = request.form["payment_method"]
+        payment = Payment(amount=amount, payment_method=payment_method)
+        db.session.add(payment)
+        db.session.commit()
+        return redirect(url_for("payment"))
+    return render_template("make_payment.html")
 def index(request):
     return render(request, 'index.html')
 

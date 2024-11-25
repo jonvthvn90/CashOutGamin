@@ -235,3 +235,46 @@ class Payout(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     payout_method = models.CharField(max_length=255)
+
+from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
+
+db = SQLAlchemy()
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(64), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password_hash = db.Column(db.String(128), nullable=False)
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
+class Tournament(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(128), nullable=False)
+    description = db.Column(db.Text, nullable=False)
+    start_date = db.Column(db.DateTime, nullable=False)
+    end_date = db.Column(db.DateTime, nullable=False)
+
+class Match(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    tournament_id = db.Column(db.Integer, db.ForeignKey("tournament.id"), nullable=False)
+    tournament = db.relationship("Tournament", backref=db.backref("matches", lazy=True))
+    player1_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    player1 = db.relationship("User", backref=db.backref("matches", lazy=True))
+    player2_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    player2 = db.relationship("User", backref=db.backref("matches", lazy=True))
+    start_date = db.Column(db.DateTime, nullable=False)
+    end_date = db.Column(db.DateTime, nullable=False)
+
+class Payment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    user = db.relationship("User", backref=db.backref("payments", lazy=True))
+    amount = db.Column(db.Float, nullable=False)
+    payment_method = db.Column(db.String(128), nullable=False)
+    payment_date = db.Column(db.DateTime, nullable=False)

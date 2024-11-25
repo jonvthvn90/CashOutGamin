@@ -1,36 +1,58 @@
 # app/__init__.py
 from flask import Flask, render_template, request, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required
-from django.apps import AppConfig
-from config import Config
-from . import models
-from . import views
-from flask import Flask, render_template, request, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required
-from . import admin
-from . import apps
-from . import tests
-from . import urls
-from config import Config
-from . import models
-from . import views
-from .models import User, Game, Tournament
-from .views import index, login, register, game_list, game_detail, tournament_list, tournament_detail
+from .models import db, User, Tournament, Match, Payment
+from .views import login_required
 
 app = Flask(__name__)
-app.config.from_object(Config)
-app.config['SECRET_KEY'] = 'secret_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-db = SQLAlchemy(app)
-login_manager = LoginManager(app)
+app.config["SECRET_KEY"] = "secret_key_here"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
+db.init_app(app)
 
-from app import models, views
+@app.route("/")
+def index():
+    return render_template("index.html")
 
-class MyAppConfig(AppConfig):
-    name = 'app'
-    verbose_name = 'My App'
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+        user = User.query.filter_by(username=username).first()
+        if user and user.check_password(password):
+            login_user(user)
+            return redirect(url_for("index"))
+    return render_template("login.html")
 
-    def ready(self):
-        import app.signals
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        username = request.form["username"]
+        email = request.form["email"]
+        password = request.form["password"]
+        user = User(username=username, email=email)
+        user.set_password(password)
+        db.session.add(user)
+        db.session.commit()
+        return redirect(url_for("login"))
+    return render_template("register.html")
+
+@app.route("/tournament")
+@login_required
+def tournament():
+    tournaments = Tournament.query.all()
+    return render_template("tournament.html", tournaments=tournaments)
+
+@app.route("/match")
+@login_required
+def match():
+    matches = Match.query.all()
+    return render_template("match.html", matches=matches)
+
+@app.route("/payment")
+@login_required
+def payment():
+    payments = Payment.query.all()
+    return render_template("payment.html", payments=payments)
+
+if __name__ == "__main__":
+    app.run(debug=True)
