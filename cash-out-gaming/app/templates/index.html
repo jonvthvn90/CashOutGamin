@@ -1,10 +1,25 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
     <h1>Welcome to Cash Out Gaming!</h1>
-    <p>Cash Out Gaming is a platform where you can play games and win cash prizes.</p>
-    <p>Our platform is designed to be user-friendly and easy to use, so you can focus on playing games and winning cash.</p>
-    <p>We offer a variety of games to choose from, including tournaments and head-to-head matches.</p>
-    <p>So why wait? Sign up now and start playing!</p>
-    <button><a href="{% url 'register' %}">Sign up now!</a></button>
+    <p>Cash Out Gaming is a platform where you can compete in tournaments and win cash prizes.</p>
+    <p>Our platform is designed to be user-friendly and easy to use, so you can focus on what matters most - winning!</p>
+    <button><a href="{{ url_for('login') }}">Login</a></button>
+    <button><a href="{{ url_for('register') }}">Register</a></button>
+    <section>
+        <h2>Upcoming Tournaments</h2>
+        <ul>
+            {% for tournament in tournaments %}
+                <li>{{ tournament.name }} - {{ tournament.start_date }} - {{ tournament.end_date }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+    <section>
+        <h2>Recent Matches</h2>
+        <ul>
+            {% for match in matches %}
+                <li>{{ match.player1.username }} vs {{ match.player2.username }} - {{ match.start_date }} - {{ match.end_date }}</li>
+            {% endfor %}
+        </ul>
+    </section>
 {% endblock %}

@@ -1,20 +1,29 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
     <h1>Tournaments</h1>
     <ul>
         {% for tournament in tournaments %}
-            <li>{{ tournament.name }} ({{ tournament.start_date }} - {{ tournament.end_date }})</li>
+            <li>{{ tournament.name }} - {{ tournament.start_date }} - {{ tournament.end_date }}
+                <button><a href="{{ url_for('join_tournament', tournament_id=tournament.id) }}">Join</a></button>
+            </li>
         {% endfor %}
     </ul>
-    <form method="post">
-        {% csrf_token %}
-        <label for="tournament_name">Create Tournament:</label>
-        <input type="text" id="tournament_name" name="tournament_name"><br><br>
-        <label for="start_date">Start Date:</label>
-        <input type="date" id="start_date" name="start_date"><br><br>
-        <label for="end_date">End Date:</label>
-        <input type="date" id="end_date" name="end_date"><br><br>
-        <input type="submit" value="Create">
-    </form>
+    <h2>Upcoming Tournaments</h2>
+    <ul>
+        {% for tournament in upcoming_tournaments %}
+            <li>{{ tournament.name }} - {{ tournament.start_date }} - {{ tournament.end_date }}
+                <button><a href="{{ url_for('join_tournament', tournament_id=tournament.id) }}">Join</a></button>
+            </li>
+        {% endfor %}
+    </ul>
+    <h2>Past Tournaments</h2>
+    <ul>
+        {% for tournament in past_tournaments %}
+            <li>{{ tournament.name }} - {{ tournament.start_date }} - {{ tournament.end_date }}
+                <button><a href="{{ url_for('view_tournament', tournament_id=tournament.id) }}">View</a></button>
+            </li>
+        {% endfor %}
+    </ul>
+    <button><a href="{{ url_for('create_tournament') }}">Create Tournament</a></button>
 {% endblock %}
